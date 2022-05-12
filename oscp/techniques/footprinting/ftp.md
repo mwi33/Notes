@@ -1,3 +1,4 @@
+# File Transfer Protocol
 TCP port 20 and 21
 
 Active and passive
@@ -6,6 +7,9 @@ Anonymous FTP
 
 Trivial FTP (TFTP) - uses UDP
 No user authentication
+
+## Authenticating
+todo:  add authentication command
 
 sftpd
 ~~~ bash
@@ -47,3 +51,19 @@ ftp> put [file path]
 wget -m --no-passive ftp://anonymous:anonymous@[ip address]
 
 ~~~
+
+## 
+
+### nmap ftp scrtips
+nmap includes additional scripts which can be used to enumerate targets.  The scripts are stored in '/usrr/share/nmap/scripts'
+
+There are several specific scrtips for FTP:
+
+1. ftp-anon.nse
+2. ftp-bounce.nse
+3. ftp-brute.nse
+4. ftp-libopie.nse
+5. ftp-vsftpd-backdoorr.nse
+6. ftp-vuln-cve2010-4221.nse
+
+## netcat
