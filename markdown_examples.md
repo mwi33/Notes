@@ -1,26 +1,32 @@
-# Headings
-## Level 2
-### Level 3
+# Overview
+Markdown official [documentation](https://markdownguide.org).
+# Examples
+## Headings
+### Level 2
+##### Level 3
 ---
-# Tables
+## Tables
 
 ---
-# Code snippets
+## Links
+Markdown official [documentation](https://markdownguide.org).
+
+## Code snippets
 ~~~ python
 import numpy as np
 
 print("This is a python code box")
 ~~~
 ---
-# References
+## References
 
 ---
-# Horizontal rule
+## Horizontal rule
 
 ---
 ---
-# Diagrams 
-## Mermaid
+## Diagrams 
+### Mermaid
 https://mermaid-js.github.io/mermaid/#/
 ### Flow
 
@@ -33,21 +39,21 @@ graph LR
 ~~~
 
 ---
-# Lists
+## Lists
 
 ---
-# Highlight
+## Highlight
 
 ---
-# Superscript/subscript
+## Superscript/subscript
 
 ---
-# Block quotes
+## Block quotes
 > This is a block quote
 
 ---
 
-# Badges
+## Badges
 
 [![Generic badge](https://img.shields.io/badge/<SUBJECT>-<STATUS>-<COLOR>.svg)](https://shields.io/)
 https://shields.io/
