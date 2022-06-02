@@ -1,2 +1,6 @@
 # Commands
-echo $XDG_CURRENT_DESKTOP
+~~~ bash
+ # retunrs what desktop is being used
+ 
+ echo $XDG_CURRENT_DESKTOP
+~~~
