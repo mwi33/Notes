@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "linux/vim.md",
+            "file": "linux/utilities/useful echo commands.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "linux/vim.md",
+                "file": "linux/utilities/useful echo commands.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,6 +89,8 @@
   },
   "active": "05d2bf0040dc8ec2",
   "lastOpenFiles": [
+    "linux/utilities/useful echo commands.md",
+    "linux/issues_resolution.md",
     "linux/vim.md",
     "additional_installs/packages.md",
     "oscp/techniques/footprinting/ftp.md",
@@ -96,8 +98,6 @@
     "oscp/kali setup.md",
     "linux/utilities/awk.md",
     "oscp/tools/gdb.md",
-    "oscp/data_management/directory structure.md",
-    "additional_installs/repos.md",
-    "Index.md"
+    "oscp/data_management/directory structure.md"
   ]
 }
