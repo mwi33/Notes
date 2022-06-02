@@ -1,0 +1,4 @@
+-X = uses POST
+-d = data i.e. credential parameter=value
+-v = verbose
+-i = ?

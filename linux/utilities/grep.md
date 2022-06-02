@@ -9,7 +9,7 @@ grep can be used with other command lin applications, including:
 [[cut]]
 [[awk]]
 [[sed]]
-[[curl]]
+[[cURL]]
 [[wget]]
 
 grep syntax

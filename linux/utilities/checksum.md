@@ -1,4 +1,4 @@
-# Purpose
+ uup# Purpose
 A checksum is a reliable method for verifying that two digitial items are identical.  The most relevant use case for this is to verify that a downloaded file has been transfered without error or unauthorised changes.  
 
 At a high-level when a file is created a cryptograpic hash is created by [[hashing]] the file.  Depending on the type of hashing algorythm used, the product of the algorythm, which is technically called the 'message digest' , although frequently referred to as the hash is created.  The hash is a fixed length hexadecimal string.
