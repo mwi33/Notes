@@ -96,3 +96,59 @@ curl -X POST http://<server_IP>:<port>/api.php/city/ -d '{"city_name":"HTB", "co
 
 ~~~
 
+# API
+## Read
+~~~ bash
+# Read
+
+# curl -s --> using curl with the -s flag to silence the output.
+
+# <IP address of the host>
+# :<port number of the host>
+# /api.php --> Resource page.  This is basically the API endpoint
+#  /city --> Table that is to be queried
+# / london --> search for london in the city table 
+# | pipe the output to the jq application.  jq is a json processing application
+
+curl -s http://<server_IP>:<port>/api.php/city/london | jq
+
+~~~
+[^1]: [[jq]] is a light weight command line application for processing json data.
+
+## Create
+To add a new entry we use the HTTP POST method 
+
+~~~ bash
+
+curl -X POST http://<IP address>:<port>/api.php/city/ -d ' {"city_name":"HTB_City", "country_name":"HTB"} ' -H 'Content_Type: application/json'
+
+# -d --> data to be sent
+# -H set header for content type
+
+~~~
+
+## Update
+PUT is used to update data through an API.  PATCH is also used to update entries, however, normally only used for a partial update, whilst PUT is used to update the entire entry.
+
+PUT and POST are very similar, the principal difference being that with PUT we need to specify the entry that is to be udpated i.e. the entry within the table.
+
+~~~ bash
+
+# Note that 'london' is the entry that we are updating.
+
+curl -X PUT http://<IP address>:<port>/api.php/city/london -d '{"city_name":"New_HTB_CITY", "country_name":"HTB"}' -H 'Content_Type: application/json'
+
+~~~
+
+In some applications the update operation may be used to create new entries as well.  In this case, if the entry does not exist, it is created.
+
+## Delete
+The DELETE method deletes the specified entry.
+? Does and empty entry delete everything?
+
+~~~ bash
+
+curl -X DELETE http://<IP address>:<port>/api.php/city/New_HTB_City
+
+~~~
+

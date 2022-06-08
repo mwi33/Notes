@@ -1,10 +1,10 @@
 # Virtual Environments
-# Windows
+## Windows
 
-## Install
+### Install
 Included with python3
 
-## Create venv
+### Create venv
 
 ~~~ python
 
@@ -13,7 +13,7 @@ python3 -m venv path {venv_name}
 ~~~
 
 
-## Start/stop venv 
+### Start/stop venv 
 
 ~~~ python
 
@@ -25,3 +25,5 @@ python3 -m venv path {venv_name}
 Set_ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 
 ~~~
+
+## Linux

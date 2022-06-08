@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "linux/utilities/useful echo commands.md",
+            "file": "oscp/techniques/login brute forcing.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "linux/utilities/useful echo commands.md",
+                "file": "oscp/techniques/login brute forcing.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +89,15 @@
   },
   "active": "05d2bf0040dc8ec2",
   "lastOpenFiles": [
-    "linux/utilities/useful echo commands.md",
-    "linux/issues_resolution.md",
-    "linux/vim.md",
-    "additional_installs/packages.md",
-    "oscp/techniques/footprinting/ftp.md",
-    "linux/users and passwords.md",
-    "oscp/kali setup.md",
-    "linux/utilities/awk.md",
-    "oscp/tools/gdb.md",
-    "oscp/data_management/directory structure.md"
+    "oscp/techniques/login brute forcing.md",
+    "oscp/technology/web requests.md",
+    "linux/utilities/jq.md",
+    "python/virtual environments.md",
+    "Implementation guidance/Python.md",
+    "python/installation.md",
+    "cryptography/hashing.md",
+    "python/hashlib.md",
+    "linux/directory structure.md",
+    "oscp/techniques/footprinting/enumeration.md"
   ]
 }
