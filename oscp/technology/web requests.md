@@ -65,4 +65,34 @@ This is the default request type when obtaining resources from a website.
 # POST
 Unlike a GET request, which places the parameters in the URL, a POST request puts them in the body.
 
+# CRUD and API
+## Read
+Reading frorm a databse uses the GET method by default.
+
+~~~ bash
+
+# selects the api.php
+# table row /city
+# search term/london
+
+curl http://<server_IP>:<port>/api.php/city/london
+
+# pipe to jq to format JSON
+
+curl http://<server_IP>:<port>/api.php/city/london | jq
+
+# partial search query
+
+curl http://<server_IP>:<port>/api.php/city/le| jq
+
+~~~
+
+## Create
+To add a new entry to a databse (create) uses the POST method.  This needs to be specified.
+
+~~~ bash
+
+curl -X POST http://<server_IP>:<port>/api.php/city/ -d '{"city_name":"HTB", "country_name":"HTB"}' -H 'Content-Type: application/json' 
+
+~~~
 
