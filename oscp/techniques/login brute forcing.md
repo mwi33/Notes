@@ -78,6 +78,33 @@ hydra -C /usr/share/wordlist/ftp_username_password.txt 192.168.1.1 -s 21 http-ge
 
 ~~~
 
+Hydra http(s)-post-form module.  Defining the success/fail string is important and possibly not obvious.  Using the absence of the 'log-in form' as an indication that we have logged in successfully should work.  The logic being that once you are logged in, the 'log-in' form will no longer be relevant.
+
+The formatting of the fail/success string is 
+
+~~~ bash
+
+F=html_content
+S=html_content
+
+# worked example
+
+:F=<form name='login'>
+
+~~~
+
+~~~ bash
+
+
+# hydra <module> <url path> <post parameters> <success/fail string>
+
+hydra http-post-form/login.php:[user parameter]=^user^&[password parameter]=^pass^:[success/fail string]
+
+
+
+
+~~~
+
 ---
 # Password spraying
 Password spraying is essentially the re-use of already cracked passwords from the same target and checking if they work on administrator portal/logins.
