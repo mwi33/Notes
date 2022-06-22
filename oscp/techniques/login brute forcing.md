@@ -39,7 +39,6 @@ Number of characters is how many characters are in the password i.e. 4
 ---
 # Brute forcing login forms
 
----
 # Default passwords
 These are the passwords that are provided with a device for initial authentication.  It is intended that these are changed as part of the installation/implementation of the device.  Often these are not changed.
 
@@ -95,13 +94,34 @@ S=html_content
 
 ~~~ bash
 
-
 # hydra <module> <url path> <post parameters> <success/fail string>
 
 hydra http-post-form/login.php:[user parameter]=^user^&[password parameter]=^pass^:[success/fail string]
 
+~~~
+# hydra http-get
+
+~~~ bash
+
+hydra -C <path to username and password list> <IP address> -s <port> http-get /
+
+# / the slash is the path to the login page
+
+~~~
+---
+# hydra http-post-form
+
+~~~ bash
+#
+# the syntax for a form attack is similar to a standard http-get.  http-post-form is followed by 3 parameteres separated by ':'
+# These are:
+# /the path to the login page
+# the structre of the username & password post parameter with place holders where the username and password from a wordlist are inserted t.o test the form
+# e.g.  username=^USER^&password^PASS^.  username and password componetes are obtained from the http-post message (developer tools or burp.
+# ^user^ and ^PASS^ are placeholders where data from respective word/password lists are inserted into the HTTP message.
 
 
+hydra -l <user name> -p <password> -f <IP address> -s port http-post-form "/login.php:username=^USER^&password=^PASS^:F=<form name='login'"
 
 ~~~
 

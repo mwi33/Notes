@@ -185,3 +185,18 @@ grep 'fatal\|error\|critical' hello_world.txt
 grep '\b[ao]bject\b' hello_world.txt
 
 ~~~
+
+## Trimming password lists
+
+Sometimes after a personalised list of usernames or passwords have been created there is a need to apply known target password policies i.e. password length.  The following code snipet includes several sed based regular expressions to remove non-compliant passwords.
+
+~~~ bash
+
+sed -ri '/^.{,7}$/d' <file.txt> # remove entries that are shorter than 8
+
+sed -ri '/[!-/:-@\[-`\{-~]+/!d <file.txt> # remove entries that do not include special characters
+
+sed -ri '/[0-9]+/!d' <file.txt> # remove entries that do not have numbers
+
+
+~~~

@@ -7,3 +7,6 @@
 5. Install git;
 6. Configure bash aliases ?; and
 7. Install base application set.
+
+# Resources
+https://kalitut.com/how-to-update-kali-linux-and-fix-update/
