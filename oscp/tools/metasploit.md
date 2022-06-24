@@ -1,4 +1,4 @@
-# Overview of Metasploit Framework (MSF)
+# Metasploit Framework (MSF)
 
 At the core of MSF is the MSF project.  The project has two implementations: the Metasploit Pro and Metasploit Framework.  There are several differences, the most obvious being that Metasploit Pro includes a GUI.
 
@@ -44,19 +44,55 @@ From within the framwork (console), the following sytax is used to select module
 
 ~~~
 
-### Index no
-1. Unique identifier
-2. Type:
+### Module parameters
+
+1. Index no
+2. Unique identifier
+3. Type:
     - Auxiliary
-    - 
+    - Encoders
+    - Exploits
+    - NOPs
+    - Payloads
+    - Plugins
+    - Post
+4. OS (operating system)
+5. Service
+6. Name (the name tag explains the actual action that will be undertaken by the module)
+
+---
+
+## Searching for a module
+From within the msfconsole we can search for modules using these tags.
+
+~~~ bash
+
+msf6 > search help
+
+~~~
+
+---
+
+## Searching for an exploit
+
+~~~ bash
+
+msf6 > eternalromance
+
+~~~
+
+---
+
+## Using msf
+
+~~~ bash
+
+msf > use <index no>
+
+~~~
+
+---
 
 ## Updating Metasploit framwork
 
 MSF is updated using the standard package mangager update/upgrade function
-
-~~~ bash
-# updating the Metasploit framework
-sudo apt update && apt upgrade -y
-
-~~~
-
