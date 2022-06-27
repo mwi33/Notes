@@ -93,6 +93,30 @@ msf > use <index no>
 
 ---
 
+## Set Local Host
+In order to establish a reverse shell, MSF needs the local address.  This should be set to the tun adapter.
+
+~~~ bash
+
+# set LHOST
+
+set LHOST <tun IP address for the VM>
+
+~~~
+## Targets
+
+Targets are unique operating system identifies taken from the versions of the specific operating system which then refine the choosed exploit module to run effectively.
+
+The 'show targets' command issued within an exploit module will display all vulnerable targets for that specific exploit.
+
+## Using grep
+
+~~~ bash
+
+ms6> grep meterpreter show payloads
+
+~~~
+
 ## Updating Metasploit framwork
 
 MSF is updated using the standard package mangager update/upgrade function
