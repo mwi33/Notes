@@ -1,0 +1,111 @@
+{
+  "main": {
+    "id": "4a2b2c813582b63b",
+    "type": "split",
+    "children": [
+      {
+        "id": "a10ae65c58d2cd17",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6f78b0c350b1b806",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Courses/OSCP/pen 100/Logs.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "96e1c3c7ebb6a10f",
+    "type": "split",
+    "children": [
+      {
+        "id": "b71cdc8ef7af36a6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "43712ce4bac35367",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "14288c87d9ad2206",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 589
+  },
+  "right": {
+    "id": "ada38fd0f3d2d569",
+    "type": "split",
+    "children": [
+      {
+        "id": "b14d691297e88f67",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cf2c072373b044b0",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Courses/OSCP/pen 100/Logs.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "43712ce4bac35367",
+  "lastOpenFiles": [
+    "Courses/OSCP/pen 100/Linux Basics 2.md",
+    "Courses/OSCP/pen 100/Linux Basics 1.md",
+    "Technology/web requests.md",
+    "Curated collection of resources.md",
+    "README.md",
+    "Implementation guidance/TLS.md",
+    "Languages/Python/virtual environments.md",
+    "Implementation guidance/Python.md",
+    "Implementation guidance/Kali.md",
+    "Courses/OSCP/osint/google_dorks.md"
+  ]
+}
