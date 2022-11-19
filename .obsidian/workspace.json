@@ -4,16 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "05d2bf0040dc8ec2",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "linux/docker.md",
-            "mode": "source",
-            "source": false
+        "id": "e208417414a99b45",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "05d2bf0040dc8ec2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "linux/docker.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "f9adedaa49a1d2cb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "linux/utilities/git_and_github.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
           }
-        }
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -31,7 +50,9 @@
             "type": "leaf",
             "state": {
               "type": "file-explorer",
-              "state": {}
+              "state": {
+                "sortOrder": "alphabetical"
+              }
             }
           },
           {
@@ -69,7 +90,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "linux/docker.md",
+                "file": "linux/utilities/git_and_github.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -87,7 +108,10 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "05d2bf0040dc8ec2",
+  "ribbon": {
+    "mostRecentAction": ""
+  },
+  "active": "f9adedaa49a1d2cb",
   "lastOpenFiles": [
     "oscp/techniques/login brute forcing.md",
     "oscp/technology/web requests.md",

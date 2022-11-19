@@ -1,5 +1,6 @@
 {
   "baseFontSize": 21,
   "translucency": false,
-  "cssTheme": "Dark Moss"
+  "cssTheme": "",
+  "accentColor": ""
 }
