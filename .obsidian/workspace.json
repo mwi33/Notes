@@ -11,12 +11,8 @@
             "id": "f9adedaa49a1d2cb",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "linux/utilities/git_and_github.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -77,7 +73,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "linux/utilities/git_and_github.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,8 +95,8 @@
   },
   "active": "f9adedaa49a1d2cb",
   "lastOpenFiles": [
-    "linux/docker.md",
     "linux/utilities/git_and_github.md",
+    "linux/docker.md",
     "oscp/techniques/login brute forcing.md",
     "oscp/technology/web requests.md",
     "linux/utilities/jq.md",
