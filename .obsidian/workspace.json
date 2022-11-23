@@ -4,18 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "e208417414a99b45",
+        "id": "143d6e3900d091e6",
         "type": "tabs",
         "children": [
           {
-            "id": "f9adedaa49a1d2cb",
+            "id": "35322c4245aaf507",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Operating Systems/Linux/users and passwords.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "8f66d251622c347c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Operating Systems/Linux/users and passwords.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -73,6 +90,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Operating Systems/Linux/users and passwords.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -93,8 +111,10 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "f9adedaa49a1d2cb",
+  "active": "8f66d251622c347c",
   "lastOpenFiles": [
+    "Permissions.md",
+    "Operating Systems/Linux/users and passwords.md",
     "linux/utilities/git_and_github.md",
     "linux/docker.md",
     "oscp/techniques/login brute forcing.md",
@@ -102,8 +122,6 @@
     "linux/utilities/jq.md",
     "python/virtual environments.md",
     "Implementation guidance/Python.md",
-    "python/installation.md",
-    "cryptography/hashing.md",
-    "python/hashlib.md"
+    "python/installation.md"
   ]
 }
