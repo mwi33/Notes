@@ -30,9 +30,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "42711627b3895ba5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Courses/OSCP/pen 100/Disk Management.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -74,7 +86,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 589
+    "width": 200
   },
   "right": {
     "id": "ada38fd0f3d2d569",
@@ -90,7 +102,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Operating Systems/Linux/users and passwords.md",
+                "file": "Courses/OSCP/pen 100/Disk Management.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,13 +120,10 @@
     "width": 300,
     "collapsed": true
   },
-  "ribbon": {
-    "mostRecentAction": ""
-  },
-  "active": "8f66d251622c347c",
+  "active": "42711627b3895ba5",
   "lastOpenFiles": [
-    "Permissions.md",
     "Operating Systems/Linux/users and passwords.md",
+    "Permissions.md",
     "linux/utilities/git_and_github.md",
     "linux/docker.md",
     "oscp/techniques/login brute forcing.md",
