@@ -39,5 +39,11 @@ nmap --script <script name> <target ip>
 |-p-|UDP|UDP port scan|nmap 192.168.1.0 -sU|
 |-sU|UDP|UDP port scan|nmap 192.168.1.0 -sU|
 
-## first scan
+## Initial scan
+The initial scan should be used to identify open ports, services, Operating system and versions.
+
+Subsequenty scan may be used to identify more detail about the implementation of identified systems and any know vulnerabilities.
+
+## 
+
 

@@ -4,47 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "143d6e3900d091e6",
+        "id": "a80427e56459597c",
         "type": "tabs",
         "children": [
           {
-            "id": "35322c4245aaf507",
+            "id": "2263b6ac593ff6fd",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Operating Systems/Linux/users and passwords.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "8f66d251622c347c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Operating Systems/Linux/users and passwords.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "42711627b3895ba5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Courses/OSCP/pen 100/Disk Management.md",
+                "file": "Courses/OSCP/Tools/nmap.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -102,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Courses/OSCP/pen 100/Disk Management.md",
+                "file": "Courses/OSCP/Tools/nmap.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,17 +95,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "42711627b3895ba5",
+  "active": "2263b6ac593ff6fd",
   "lastOpenFiles": [
-    "Operating Systems/Linux/users and passwords.md",
-    "Permissions.md",
-    "linux/utilities/git_and_github.md",
-    "linux/docker.md",
-    "oscp/techniques/login brute forcing.md",
-    "oscp/technology/web requests.md",
-    "linux/utilities/jq.md",
-    "python/virtual environments.md",
-    "Implementation guidance/Python.md",
-    "python/installation.md"
+    "Courses/OSCP/Tools/nmap.md",
+    "Languages/Python/decorators.md",
+    "Languages/Python/bytes.md",
+    "Languages/Python/libraries/numpy.md",
+    "Languages/Python/libraries/base64.md",
+    "Implementation guidance/VPS.md",
+    "Implementation guidance/Veracrypt.md",
+    "Implementation guidance/Ubuntu.md",
+    "Implementation guidance/TLS.md",
+    "Implementation guidance/SSH.md"
   ]
 }
