@@ -38,12 +38,22 @@ nmap --script <script name> <target ip>
 |--min-rate|Minimum number of packets per second|Speeds up the scan as the number increases|nmap 192.168.1.0 -sC|
 |-p-|UDP|UDP port scan|nmap 192.168.1.0 -sU|
 |-sU|UDP|UDP port scan|nmap 192.168.1.0 -sU|
+|-sV|UDP|UDP port scan|nmap 192.168.1.0 -sV|
 
 ## Initial scan
 The initial scan should be used to identify open ports, services, Operating system and versions.
 
-Subsequenty scan may be used to identify more detail about the implementation of identified systems and any know vulnerabilities.
+Subsequently scans may be used to identify more detail about the implementation of identified systems and any know vulnerabilities.
 
-## 
+~~~ bash
+
+nmap <ip address> -sV -Pn -o file_name
+
+
+~~~
+
+## Cheat Sheets
+https://www.stationx.net/nmap-cheat-sheet/
+https://highon.coffee/blog/nmap-cheat-sheet/
 
 
