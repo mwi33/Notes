@@ -1,0 +1,169 @@
+{
+  "main": {
+    "id": "ea01c9098fcef282",
+    "type": "split",
+    "children": [
+      {
+        "id": "fc09a869d83fe4f0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d2d12bdc0b94d867",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "fb013b7b85027436",
+    "type": "split",
+    "children": [
+      {
+        "id": "cd402138e780801a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b21d36f92fec52c4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "0cb6c226e2e80aa3",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "73e65c05f92731da",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          },
+          {
+            "id": "52a84711517c1746",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 492.5
+  },
+  "right": {
+    "id": "1b6b9f51103e9b24",
+    "type": "split",
+    "children": [
+      {
+        "id": "9a777eac5efbc268",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8f636419f410000b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "1f85eb4407194771",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "5eeea8bd5a7f5414",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "aecf0340e8a0ac31",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "d2d12bdc0b94d867",
+  "lastOpenFiles": [
+    "Microsoft 365 - Enterprise Administrator Expert/MS-102 Configure your Microsoft 365 tenant/MS-102 Manage users, licenses and mail contacts in MS-365.md",
+    "Account details.md",
+    "Microsoft 365 Roles.md",
+    "Microsoft 365 - Enterprise Administrator Expert/MS-102 Manage your Microsoft tenant/MS-102 Mange your MS 365 tenant - Overview.md",
+    "Microsoft 365 - Enterprise Administrator Expert/MS-102 Configure your Microsoft 365 tenant/MS-102 Configure your Microsoft 365 experience.md",
+    "Microsoft 365 - Enterprise Administrator Expert/MS-102 Configure your Microsoft 365 tenant/MS-102 Configure your MS365 tenant - Overview.md",
+    "Microsoft 365 - Enterprise Administrator Expert/Certification Overview.md",
+    "Accounts",
+    "Microsoft 365 - Enterprise Administrator Expert/MS-102 Implement identity synchronisation/MS 102 Implement Identity Synchronisation - Overview.md",
+    "Microsoft 365 - Enterprise Administrator Expert/External Resources.md",
+    "Microsoft 365 - Enterprise Administrator Expert/Progress.md",
+    "Microsoft 365 - Enterprise Administrator Expert/MS-102 Configure your Microsoft 365 tenant/Tenant Configuration Checklist.md",
+    "Untitled.canvas",
+    "Microsoft 365 - Enterprise Administrator Expert/Additional Learning.md",
+    "().md",
+    "Microsoft 365 - Enterprise Administrator Expert",
+    "M365 Enterprise Adminstrator"
+  ]
+}
