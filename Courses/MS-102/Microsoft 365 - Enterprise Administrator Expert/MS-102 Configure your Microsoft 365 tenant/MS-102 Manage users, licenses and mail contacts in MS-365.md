@@ -80,6 +80,191 @@ Managing user accounts involves managing several account settings:
 3.  Specifying user location settings; and
 4. Assigning licenses.
 
+## Manage user licenses in MS 365
+
+License provide access to MS 365 services (products), like Outlook and SharePoint online.  When an Administrator assigns a licese, MS 365 sets up the required services for the user.  For example, when an administrator assigns a license for SharePoint Online sets up 'edit' permissions.
+
+Only members of the 'MS 365 Global Admin' and 'User Management' can assign or remove licenses from users.
+
+**Warning** 
+When and administrartor removes a license from a user, the system deletes any service data that is associated with that user.  You then have a 30 day grace period to recover that data.  After this grace period the data is unrecoverable.
+
+### Viewing user license information
+
+The MS 365 admin centre provides acces to license and user information.  Admins can view this information through both the billiing and users drop downs.
+
+### Assigning liceses
+
+Administrators can assign licenses through either the MS 365 admin centre or through PowerShell.  
+
+## Using microsoft graph PowerShell to manage user licenes
+
+Administrators must assign a location to user accounts.  The system requires a location when you create a new user in MS 365 admin centre.  By default, accounts syncronised from and organistion's on-premise Active Directory Domain Services don't have any location data.  Consequently, location data can be created from either:
+
+1.  The MS 365 admin centre;
+2.  Microsoft Graph PowerShell; and
+3. The Azure Portal  (Active Directory > Users > user Account > Profile > Contact info > Country or region).
+
+###  Finding unlicesed accounts using Microsoft graph PowerShell
+
+Assigning and removing licenses for a user requires User.ReadWrite.All permission scope or one of the other permissions listed in the ['Assign license' Microsoft Graph API Reference page]()
+
+todo -> add code block here
+
+### Assigning licenses to user accounts
+
+## Recover deleted user accounts in Microsoft 365
+
+When an employee leaves an organisation, it is good practise to delete the corresponding user account.  This also results in recovering all of the licenses that were being used by that user.
+
+### Deleting a user account
+
+User accounts can be deleted from within the MS 365 admin centre.  
+
+Users -> Active users -> (select the relevant user) Delete user -> (from the delete users pane) Delete user -> close
+
+Users can also be deleted using MS Graph PowerShell using the 'Remove-MgUser' with the -UserIdstring parameter
+
+``` powershell
+
+Remove-MgUser -UserId '5c442efb-5e66-484a-936a-91b6810bed14'
+
+```
+
+### Restoring a deleted user account
+
+When a user is deleted, it initially becomes inactive so that the user can no loger sign in.  MS 365 provides a 30 day grace period, during which deleted accounts can be recoered.  After this 30 day period the account can no longer be recovered.
+
+1.  To restore a user account select the Users -> Active Users -> Deleted users ;
+2.   Select the deleted user that you want to recover and then select the Restore user option; and
+3. You will also need to select how a password is assigned.
+
+Accounts can also be recovered using the MS Graph PowerShell using the Restore-MgDirectoryDeletedItem.
+
+``` powershell
+
+Restore_MgDirectoryDeletedItem -DirectoryObjectId '5c442efb-5e66-484a-936a-91b6810bed14'
+
+```
+
+## Perform bulk user maintenace in Azure Active Directory
+
+Azure AD enables organisations to undertake bulk user maintenance including creating and deleting users as well as restoring deleted users.  
+
+### Create users in bulk
+
+Buld user operations require the use of CSV files.  The format for the CSV file for each of the create, delete and restore functions.  
+
+The first 2 rows of the CSV are reserved for the version number and the column headings.  Initially, the third row has an example, however, this row is replaced by the first row of users to be uploaded. 
+
+1.  Row one contains the version number;
+2.  Row two contains the column headings in the format  - item name [propertyName] Required or blank e.g. Name[displayName] Required; and
+3.  Examples.
+
+In order to bulk create new users, administrators must have wither Global Admin or User Admin.
+
+#### Check status of your bulk operations
+
+The status of bulk administration processes can be checked in the Azure AD admin portal.
+
+#### Verify the users were created
+
+Verification can be undertaken either through the Azure AD admin portal of PowerShell.  Either Global Admin or User Admin permissions are required.
+
+#### Delete users in bulk
+
+Just as adding users in bulk, users can also be deleted in bulk.  The processes is basically the same as adding users in bulk.
+
+#### Restore users in bulk
+
+This is the same process as creating and deleting users in bulk.
+
+#### Creating users in bulk using PowerShell
+
+See Additional Learning for details on how to connect and configure Microsoft Graph PowerShell.
+
+### Create and manage guest users
+
+MS 365 has the facility to add guest users, which permits collaboration with users external to the tenant.  In order to provide external access, administrators must have either Global Admin, Guest Inviter or User Admin.
+
+Administrators can add guest users to either Azure AD, Groups of Applications.  Guest users are added to Azure AD with type 'Guest'.  The guest user much redeem their invitation before they can begin collaborating with organisational users.
+
+Once the end user has been added to the host organisations Azure Active Directory , the guest user can select either:
+
+1.  A direct link to a shared application; or
+2. The redemption URL in the invitation email they received.
+
+Note - Guest invitations do not expire.
+
+By default, guest access is enabled by default in MS 365 and the MS 365 Administrator controls whether or not a guest has access to all groups, a subset of groups or the entire organisation.
+
+In addtion to MS 365 other apps also have the capacity to provide guest access.  These include:
+
+1.  Power Apps;
+2. Lists;
+3. OneDrive;
+4. Planner;
+5. MS 365 Groups; and
+6. Yammer.
+
+#### Restrict guest access permissions in Azure AD
+
+There are three different permissions models for guest access.  These are:
+
+1.  Same as member users;
+2. Limited access (default); and
+3. Restricted access.
+
+When guest users have restricted access, they can only view their own profile.  They don't have permission to view other users, even if the guest searches by User Principal Name or object Id.  Restricted access also restricts guest users from seeing the membership of groups they're in.  
+
+External collaboration settings let an organisation specify what roles it can invite external users for B2B collaboration.  These settings also include options for allowing or blocking specific domains and options for restricting what external guests can see in your Azure AD directory.   The following options:
+
+1.  Determine guest user access;
+2. Specify who can invite guests;
+3. Enable guest self-service sign-up via user flows; and
+4. Allow or block domains.
+
+Cross-tennant access settings provide the capacity to configure access to other Azure AD Organisations.  This ensure both inbound and outbound collaboration and specifies access to user, groups and applications.  
+
+Guest access permissions are set in Azure AD.
+
+Microsoft 365 admin centre ->  Admin centres -> Azure AD -> User settings -> Manage External collaboration settings
+
+#### Add guests in (Active Directory, a group and an application)
+
+Todo --> add processes here
+
+### Create and manage mail contacts
+
+
+
+#### Permissions needed to create mail contacts
+
+#### Use the new EAC to create mail contacts
+
+#### Use the new EAC to modify mail contacts
+
+#### Use the new EAC to remove mail contacts
+
+#### Use Exchange Online PowerShell to modify mail contacts
+
+#### Use Exchange Online PowerShell to modify mail contacts
+
+#### Use Exchange Online PowerShell to remove mail contacts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
