@@ -87,17 +87,23 @@ License provide access to MS 365 services (products), like Outlook and SharePoin
 Only members of the 'MS 365 Global Admin' and 'User Management' can assign or remove licenses from users.
 
 **Warning** 
-When and administrartor removes a license from a user, the system deletes any service data that is associated with that user.  You then have a 30 day grace period to recover that data.  After this grace period the data is unrecoverable.
+When and administrator removes a license from a user, the system deletes any service data that is associated with that user.  You then have a 30 day grace period to recover that data.  After this grace period the data is unrecoverable.
 
 ### Viewing user license information
 
-The MS 365 admin centre provides acces to license and user information.  Admins can view this information through both the billiing and users drop downs.
+The MS 365 admin centre provides acces to license and user information.  Admins can view this information through both the billiing and users drop downs.  Various filters can be used to refine the displayed information, for example to show unlicensed users.
 
-### Assigning liceses
+### Assigning licenses
 
-Administrators can assign licenses through either the MS 365 admin centre or through PowerShell.  
+Administrators can use either the MS 365 admin centre or PowerShell to assign a license to a user.  Administrators can undertake bulk user maintenance using the MS 365 admin centre.
 
-## Using microsoft graph PowerShell to manage user licenes
+From within the MS 365 admin centre select:
+
+Users -> Active User -> (select the relevant user) -> from the menu (ellipses) select Manage product licenses.
+
+Administrators can assign licenses through either the MS 365 admin centre or through PowerShell. 
+
+## Using Microsoft graph PowerShell to manage user licenes
 
 Administrators must assign a location to user accounts.  The system requires a location when you create a new user in MS 365 admin centre.  By default, accounts syncronised from and organistion's on-premise Active Directory Domain Services don't have any location data.  Consequently, location data can be created from either:
 
@@ -109,13 +115,34 @@ Administrators must assign a location to user accounts.  The system requires a l
 
 Assigning and removing licenses for a user requires User.ReadWrite.All permission scope or one of the other permissions listed in the ['Assign license' Microsoft Graph API Reference page]()
 
-todo -> add code block here
+PowerShell requires the Organization.Read.App permission scope to read the licenses available in the tenant.
+
+~~~ powershell
+Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All
+
+# The 'Get-MgSubscribedSku' command shows the available licenses in each plan
+Get-MgSubscribedSku
+
+# To find the unlicensed accounts in your organisation, run the following command
+
+Get-MgUser -Filter 'assignedLicense/$count eq 0' -ConsistencyLevel eventual -CountVariable unlicensedUserCount -All
+~~~
+
+Todo - there are heaps more PowerShell commands to add here.
 
 ### Assigning licenses to user accounts
 
+To assign a license to a user, use the following command:
+
+``` powershell
+
+Set-MgUserLicense -UserId $userUPN -AddLicense @(SkuId = "<SkuId>") -RemoveLicense@()
+
+```
+
 ## Recover deleted user accounts in Microsoft 365
 
-When an employee leaves an organisation, it is good practise to delete the corresponding user account.  This also results in recovering all of the licenses that were being used by that user.
+When an employee leaves an organisation, it is good practice to delete the corresponding user account.  This also results in recovering all of the licenses that were being used by that user.
 
 ### Deleting a user account
 
@@ -236,11 +263,21 @@ Todo --> add processes here
 
 ### Create and manage mail contacts
 
-
+In Exchange Online Organizations, mail contacts are mail enabled objects that contain information about people that exist outside of your organization.  
 
 #### Permissions needed to create mail contacts
 
+The required permissions for creating mail contacts can come from either:
+
+1.  Recipient Management role group;
+2. Organization Management role group; and
+3. Mail recipient role.
+
 #### Use the new EAC to create mail contacts
+
+Use the following steps to create mail contacts in the new Exchange Admin Centre (EAC):
+
+1.  
 
 #### Use the new EAC to modify mail contacts
 

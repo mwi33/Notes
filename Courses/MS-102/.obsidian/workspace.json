@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "fc09a869d83fe4f0",
+        "id": "cd8560b9b8bae9be",
         "type": "tabs",
         "children": [
           {
-            "id": "d2d12bdc0b94d867",
+            "id": "ee353e95643b4bdb",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Microsoft 365 - Enterprise Administrator Expert/MS-102 Configure your Microsoft 365 tenant/MS-102 Manage users, licenses and mail contacts in MS-365.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -89,6 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Microsoft 365 - Enterprise Administrator Expert/MS-102 Configure your Microsoft 365 tenant/MS-102 Manage users, licenses and mail contacts in MS-365.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,6 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Microsoft 365 - Enterprise Administrator Expert/MS-102 Configure your Microsoft 365 tenant/MS-102 Manage users, licenses and mail contacts in MS-365.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +132,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Microsoft 365 - Enterprise Administrator Expert/MS-102 Configure your Microsoft 365 tenant/MS-102 Manage users, licenses and mail contacts in MS-365.md"
+              }
             }
           }
         ]
@@ -146,22 +154,22 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d2d12bdc0b94d867",
+  "active": "ee353e95643b4bdb",
   "lastOpenFiles": [
-    "Microsoft 365 - Enterprise Administrator Expert/MS-102 Configure your Microsoft 365 tenant/MS-102 Manage users, licenses and mail contacts in MS-365.md",
     "Account details.md",
+    "Microsoft 365 - Enterprise Administrator Expert/MS-102 Configure your Microsoft 365 tenant/MS-102 Manage users, licenses and mail contacts in MS-365.md",
+    "Microsoft 365 - Enterprise Administrator Expert/MS-102 Configure your Microsoft 365 tenant/MS-102 Configure your MS365 tenant - Overview.md",
+    "Microsoft 365 - Enterprise Administrator Expert/Progress.md",
+    "Microsoft 365 - Enterprise Administrator Expert/Certification Overview.md",
+    "Microsoft 365 - Enterprise Administrator Expert/MS-102 Configure your Microsoft 365 tenant/Tenant Configuration Checklist.md",
     "Microsoft 365 Roles.md",
+    "Microsoft 365 - Enterprise Administrator Expert/External Resources.md",
+    "Microsoft 365 - Enterprise Administrator Expert/Additional Learning.md",
     "Microsoft 365 - Enterprise Administrator Expert/MS-102 Manage your Microsoft tenant/MS-102 Mange your MS 365 tenant - Overview.md",
     "Microsoft 365 - Enterprise Administrator Expert/MS-102 Configure your Microsoft 365 tenant/MS-102 Configure your Microsoft 365 experience.md",
-    "Microsoft 365 - Enterprise Administrator Expert/MS-102 Configure your Microsoft 365 tenant/MS-102 Configure your MS365 tenant - Overview.md",
-    "Microsoft 365 - Enterprise Administrator Expert/Certification Overview.md",
     "Accounts",
     "Microsoft 365 - Enterprise Administrator Expert/MS-102 Implement identity synchronisation/MS 102 Implement Identity Synchronisation - Overview.md",
-    "Microsoft 365 - Enterprise Administrator Expert/External Resources.md",
-    "Microsoft 365 - Enterprise Administrator Expert/Progress.md",
-    "Microsoft 365 - Enterprise Administrator Expert/MS-102 Configure your Microsoft 365 tenant/Tenant Configuration Checklist.md",
     "Untitled.canvas",
-    "Microsoft 365 - Enterprise Administrator Expert/Additional Learning.md",
     "().md",
     "Microsoft 365 - Enterprise Administrator Expert",
     "M365 Enterprise Adminstrator"
