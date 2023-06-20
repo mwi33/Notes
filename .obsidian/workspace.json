@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "a80427e56459597c",
+        "id": "cc33b940405deb33",
         "type": "tabs",
         "children": [
           {
-            "id": "6321e6069813a915",
+            "id": "cb0dc8961d58534f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Courses/MS-102/Microsoft 365 - Enterprise Administrator Expert/Progress.md",
+                "file": "Courses/OSCP/oscp_learning_and_development.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Courses/MS-102/Microsoft 365 - Enterprise Administrator Expert/Progress.md",
+                "file": "Courses/OSCP/oscp_learning_and_development.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,8 +112,9 @@
       "markdown-importer:Open format converter": false
     }
   },
-  "active": "6321e6069813a915",
+  "active": "cb0dc8961d58534f",
   "lastOpenFiles": [
+    "Courses/MS-102/Microsoft 365 - Enterprise Administrator Expert/Progress.md",
     "Courses/MS-102/Microsoft 365 - Enterprise Administrator Expert/MS-102 Configure your Microsoft 365 tenant/MS-102 Manage groups in M365.md",
     "Courses/MS-102/Active Directory Architecture.md",
     "Courses/MS-102/Microsoft 365 - Enterprise Administrator Expert/MS-102 Configure your Microsoft 365 tenant/MS-102 Manage users, licenses and mail contacts in MS-365.md",
@@ -121,7 +122,6 @@
     "Courses/MS-102/Microsoft 365 Roles.md",
     "Courses/MS-102/Microsoft 365 Admin Centres.md",
     "Courses/MS-102/Account details.md",
-    "Courses/MS-102/Microsoft 365 - Enterprise Administrator Expert/Progress.md",
     "Courses/MS-102/Microsoft 365 - Enterprise Administrator Expert/Certification Overview.md",
     "Courses/MS-102/Microsoft 365 - Enterprise Administrator Expert/Additional Learning.md",
     "Curated collection of resources.md",
