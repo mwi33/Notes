@@ -18,4 +18,4 @@ Since the changes, I've now been added into 'Pen 103'.
 - [ ] Introduction to security assessments
 - [ ] Conclusion: The road ahead
 
-After completing 'Pen 103' I have to choose a course
+After completing 'Pen 103' I have to choose a course.  I had planned to select 'Pen 200 - OSCP', however I could also select 'Web 200' or 'SOC 200'.
