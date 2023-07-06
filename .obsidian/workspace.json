@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Courses/OSCP/oscp_learning_and_development.md",
+                "file": "Courses/OSCP/Tools/nmap.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Courses/OSCP/oscp_learning_and_development.md",
+                "file": "Courses/OSCP/Tools/nmap.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",

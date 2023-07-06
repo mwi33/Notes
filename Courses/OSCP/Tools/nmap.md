@@ -43,17 +43,27 @@ nmap --script <script name> <target ip>
 ## Initial scan
 The initial scan should be used to identify open ports, services, Operating system and versions.
 
-Subsequently scans may be used to identify more detail about the implementation of identified systems and any know vulnerabilities.
+Subsequent scans may be used to identify more detail about the implementation of identified systems and any know vulnerabilities.
 
 ~~~ bash
 
 nmap <ip address> -sV -Pn -o file_name
 
+~~~
+
+
+## Go to scans
+
+~~~ bash
+
+nmap -p 445,22,80,443,8080,8443,8000
+
+nmap -p- -sV -A 
 
 ~~~
+
+## Service specific scans
 
 ## Cheat Sheets
 https://www.stationx.net/nmap-cheat-sheet/
 https://highon.coffee/blog/nmap-cheat-sheet/
-
-

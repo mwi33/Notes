@@ -50,7 +50,6 @@ kali is awesome
 
 find /etc -name hosts
 
-fit /etc -name "hosts*"
-
+find /etc -name "hosts*"
 
 ~~~
