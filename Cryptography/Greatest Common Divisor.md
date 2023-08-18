@@ -1,4 +1,4 @@
-# Greatest Commond Divisor
+# Greatest Common Divisor
 GCD is the larges divisor common to two integers.  Divisors are an integers factors.
 
 e.g. gcd(12, 20)

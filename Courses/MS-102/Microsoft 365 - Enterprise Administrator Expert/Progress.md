@@ -18,25 +18,15 @@
 - [x] Determine the user identity model for your organization
 - [x] Create user accounts in MS 365
 - [x] Manage user account settings in MS 365
-- [x] Manage user licenses in MS 365
-- [x] Recover deleted user accounts in MS 365
-- [x] Perform bulk user maintenance in Azure Active Directory
-- [x] Create and manage guest users
-- [x] Create and manage mail contacts
-- [x] Knowledge check
-- [x] Summary
-
-### Manage groups in MS 365
-
-
-- [x] Introduction
-- [x] Examine groups in MS 365
-- [x] Create and manage groups in MS 365
-- [ ] Create dynamic groups using Azure rule builder
-- [ ] Create a MS 365 group naming policy
-- [ ] Create groups in Exchange Online and SharePoint online
+- [ ] Manage user licenses in MS 365
+- [ ] Recover deleted user accounts in MS 365
+- [ ] Perform bulk user maintenance in Azure Active Directory
+- [ ] Create and manage guest users
+- [ ] Create and manage mail contacts
 - [ ] Knowledge check
 - [ ] Summary
+
+### Manage groups in MS 365
 
 ### Add a custom domain in MS 365
 
