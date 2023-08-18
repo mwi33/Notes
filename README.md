@@ -33,11 +33,11 @@
 	7. [VeraCrypt](VeraCrypt)
 	8. [VPS](VPS)
 7. Technology
-	1. [Web Requests](Web Requests)
+	1. [Web Requests](Web%20Requests)
 8. Exploits
-	1. [Path injection](Path Injection)
-	2. [File Duplication](File Duplication)
+	1. [Path injection](Path%20Injection)
+	2. [File Duplication](File%20Duplication)
 9. Useful resources
-	1. [Curated Collection of Resources](Curated Collection of Resources)
-	2. [Markdown Syntax](Markdown Syntax)
+	1. [Curated Collection of Resources](Curated%20Collection%20of%20Resources)
+	2. [Markdown Syntax](Markdown%20Syntax)
 

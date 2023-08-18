@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "8a581a5b40da7fc4",
+        "id": "40cff2b6266612ce",
         "type": "tabs",
         "children": [
           {
-            "id": "c95f409d4e536dc9",
+            "id": "3c930569efcaaafa",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -113,15 +113,16 @@
       "custom-sort:Toggle custom sorting": false
     }
   },
-  "active": "c95f409d4e536dc9",
+  "active": "3c930569efcaaafa",
   "lastOpenFiles": [
-    "Exploits/File Duplication.md",
-    "README.md",
-    "().md",
     "Markdown Syntax.md",
+    "README.md",
     "Curated collection of resources.md",
+    "Exploits/File Duplication.md",
     "Exploits/Privilege escalation/Path Injection.md",
     "Technology/Web Requests.md",
+    "Web.md",
+    "().md",
     "Implementation guidance/VeraCrypt.md",
     "Cryptography/Numbering Systems.md",
     "Cryptography/Hashing.md",
@@ -140,7 +141,6 @@
     "Courses/OSCP/PEN 200.md",
     "Permissions.md",
     "Courses/OSCP/Tools/metasploit.md",
-    "Courses/OSCP/Tools/maltego.md",
-    "Courses/OSCP/Tools/hashcat.md"
+    "Courses/OSCP/Tools/maltego.md"
   ]
 }
