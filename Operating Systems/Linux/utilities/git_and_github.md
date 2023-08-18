@@ -80,6 +80,38 @@ git status
 
 ~~~
 
+### Git SSH Keys
+
+This is the process for creating SSH key pairs and adding the public key to your github account.
+
+On the local machine create a SSH key pair by running the following commands:
+
+~~~ bash
+# run the folling command to create a ssh key pair
+ssh-keygen -t ed25519 -C "email@address"
+
+# start the ssh-agent in the background
+eval "$(ssh-agent -s)"
+
+# add the private key to the ssh-agent
+ssh-add ~/.ssh/id_ed25519
+~~~
+
+Open github and sign in.  Open the setting section and select the 'SSH and GPG keys' option.
+
+Select the 'New SSH key' option.  Provide a name for the new key and copy the public key contents into the provided text box.  The easiest way to copy the contents of the public key is to use the 'cat' command and copy and paste the contents
+
+~~~ bash
+cat ~/.ssh/id_ed25519.pub
+~~~
+
+You can test the connection to your github repository by running the following command.
+
+~~~ bash
+ssh -T git@github.com
+
+> Hi Username!  You've successfully authenticated. 
+~~~
 ### Git files
 #### readme.md
 #### .gitignore

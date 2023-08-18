@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Operating Systems/Linux/utilities/git_and_github.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "Operating Systems/Linux/utilities/git_and_github.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,8 +115,9 @@
   },
   "active": "3c930569efcaaafa",
   "lastOpenFiles": [
-    "Markdown Syntax.md",
+    "Operating Systems/Linux/ssh.md",
     "README.md",
+    "Markdown Syntax.md",
     "Curated collection of resources.md",
     "Exploits/File Duplication.md",
     "Exploits/Privilege escalation/Path Injection.md",
@@ -140,7 +141,6 @@
     "cron daemon.md",
     "Courses/OSCP/PEN 200.md",
     "Permissions.md",
-    "Courses/OSCP/Tools/metasploit.md",
-    "Courses/OSCP/Tools/maltego.md"
+    "Courses/OSCP/Tools/metasploit.md"
   ]
 }
