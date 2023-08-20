@@ -1,0 +1,25 @@
+- [x] Copyright
+- [x] Penetration testing with Kali Linux: General Course Information
+- [x] Introduction: Cybersecurity
+- [ ] Effective Learning Strategies
+- [ ] Report Writing for Penetration Testers
+- [ ] Information Gathering
+- [ ] Vulnerability Scanning
+- [ ] Introduction to Web Application Attacks
+- [ ] Common Web Applications Attacks
+- [ ] SQL Injection Attacks
+- [ ] Client-side Attacks
+- [ ] Locating Public Exploits
+- [ ] Fixing Exploits
+- [ ] Antivirus Evasion
+- [ ] Password Attacks
+- [ ] Windows Privilege Escalation
+- [ ] Linus Privilege Escalation
+- [ ] Port Redirection and SSH Tunneling
+- [ ] Tunneling Through Deep Packet Inspection
+- [ ] The Metasploit Framework
+- [ ] Active Directory Introduction and Enumeration
+- [ ] Attacking Active Directory Authentication
+- [ ] Lateral Movement in Active Directory
+- [ ] Assembling the Pieces
+- [ ] Trying Harder: The Challenge Labs
