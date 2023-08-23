@@ -2,7 +2,7 @@
 - [x] Penetration testing with Kali Linux: General Course Information
 - [x] Introduction: Cybersecurity
 - [x] [Effective Learning Strategies](Effective%20Learning%20Strategies.md)
-- [ ] Report Writing for Penetration Testers
+- [x] Report Writing for Penetration Testers
 - [ ] Information Gathering
 - [ ] Vulnerability Scanning
 - [ ] Introduction to Web Application Attacks
