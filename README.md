@@ -10,7 +10,7 @@
 	4. [Micro corruption](Micro%20Corruption)
 	5. [Over the wire](Over%20the%20Wire)
 3. Languages
-	1. [Python](Python)
+	1. [Python](Python.md)
 	2. [C]()
 	3. [Lua]()
 	4. [Java Script]()
@@ -24,14 +24,14 @@
 	1. [Windows](Windows)
 	2. [Linux](Linux)
 6. Implementation guidance
-	1. [Flask](Flask)
-	2. [Kali](Kali)
-	3. [Python](Python)
-	4. [SSH](SSH)
-	5. [TLS](TLS)
-	6. [Ubuntu](Ubuntu)
-	7. [VeraCrypt](VeraCrypt)
-	8. [VPS](VPS)
+	1. [flask](Notes/Languages/Python/flask.md)
+	2. [Kali](Kali.md)
+	3. [Python](Python.md)
+	4. [SSH](Notes/Implementation%20Guidance/SSH.md)
+	5. [TLS](TLS.md)
+	6. [Ubuntu](Ubuntu.md)
+	7. [Veracrypt](Notes/Implementation%20Guidance/Veracrypt.md)
+	8. [VPS](VPS.md)
 7. Technology
 	1. [Web Requests](Web%20Requests)
 8. Exploits
