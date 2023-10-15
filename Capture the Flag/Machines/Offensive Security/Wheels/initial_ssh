@@ -1,0 +1,4 @@
+# Nmap 7.94 scan initiated Sat Oct 14 23:52:23 2023 as: nmap -p 80 -O -oG initial_ssh 192.168.181.202
+Host: 192.168.181.202 ()	Status: Up
+Host: 192.168.181.202 ()	Ports: 80/open/tcp//http///	Seq Index: 254	IP ID Seq: All zeros
+# Nmap done at Sat Oct 14 23:52:35 2023 -- 1 IP address (1 host up) scanned in 12.69 seconds
