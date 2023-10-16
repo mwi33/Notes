@@ -1,0 +1,4 @@
+# Nmap 7.94 scan initiated Sun Oct 15 18:57:22 2023 as: nmap --script http-enum.nse -oG nmap_script_http-enum 192.168.236.202
+Host: 192.168.236.202 ()	Status: Up
+Host: 192.168.236.202 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (998)
+# Nmap done at Sun Oct 15 18:58:01 2023 -- 1 IP address (1 host up) scanned in 38.97 seconds

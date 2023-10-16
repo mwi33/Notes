@@ -1,0 +1,4 @@
+# Nmap 7.94 scan initiated Sun Oct 15 17:59:31 2023 as: nmap -sU -oG nmap_udp_initial 192.168.236.202
+Host: 192.168.236.202 ()	Status: Up
+Host: 192.168.236.202 ()	Ports: 	Ignored State: closed (1000)
+# Nmap done at Sun Oct 15 18:16:14 2023 -- 1 IP address (1 host up) scanned in 1003.21 seconds

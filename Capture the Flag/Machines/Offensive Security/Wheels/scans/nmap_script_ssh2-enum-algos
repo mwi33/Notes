@@ -1,0 +1,4 @@
+# Nmap 7.94 scan initiated Sun Oct 15 18:31:46 2023 as: nmap --script ssh2-enum-algos.nse -oG nmap_script_ssh2-enum-algos 192.168.236.202
+Host: 192.168.236.202 ()	Status: Up
+Host: 192.168.236.202 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (998)
+# Nmap done at Sun Oct 15 18:31:50 2023 -- 1 IP address (1 host up) scanned in 3.78 seconds

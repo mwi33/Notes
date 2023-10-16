@@ -4,16 +4,36 @@
     "type": "split",
     "children": [
       {
-        "id": "40cff2b6266612ce",
+        "id": "51dbf982c1e3ebc8",
         "type": "tabs",
+        "dimension": 46.38069705093834,
         "children": [
           {
-            "id": "3c930569efcaaafa",
+            "id": "a3c94d516e054739",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Operating Systems/Linux/utilities/git_and_github.md",
+                "file": "Wheels - initial notes.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "be8e3b9b70cf0b28",
+        "type": "tabs",
+        "dimension": 53.61930294906166,
+        "children": [
+          {
+            "id": "bc371077d911de67",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Courses/OSCP/pen 200/Information Gathering.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +89,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 396.5
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "ada38fd0f3d2d569",
@@ -85,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Operating Systems/Linux/utilities/git_and_github.md",
+                "file": "Wheels - initial notes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,8 +134,20 @@
       "custom-sort:Toggle custom sorting": false
     }
   },
-  "active": "3c930569efcaaafa",
+  "active": "a3c94d516e054739",
   "lastOpenFiles": [
+    "Capture the Flag/Machines/Offensive Security/Wheels/scans/nmap_script_http-enum",
+    "Capture the Flag/Machines/Offensive Security/Wheels/scans/nmap_script_ssh-auth-methods",
+    "Capture the Flag/Machines/Offensive Security/Wheels/scans/nmap_script_ssh2-enum-algos",
+    "Capture the Flag/Machines/Offensive Security/Wheels/scans/nmap_tcp_p25",
+    "Capture the Flag/Machines/Offensive Security/Wheels/scans/nmap_os_guess",
+    "Courses/OSCP/pen 200/Information Gathering.md",
+    "Wheels - initial notes.md",
+    "Capture the Flag/Machines/Offensive Security/Wheels/scans/nmap_network_sweep",
+    "Capture the Flag/Machines/Offensive Security/Wheels/scans/nmap_udp_initial",
+    "Capture the Flag/Machines/Offensive Security/Wheels/scans/nmap_tcp_initial",
+    "Capture the Flag/Machines/Offensive Security/Wheels/scans",
+    "Capture the Flag/Machines/Offensive Security/Wheels",
     "Operating Systems/Linux/ssh.md",
     "README.md",
     "Markdown Syntax.md",
@@ -138,9 +171,6 @@
     "Courses/MS-102/Microsoft 365 - Enterprise Administrator Expert/MS 102 Certification Overview.md",
     "Courses/OSCP/Tools/Crontab.md",
     "Untitled.canvas",
-    "cron daemon.md",
-    "Courses/OSCP/PEN 200.md",
-    "Permissions.md",
-    "Courses/OSCP/Tools/metasploit.md"
+    "cron daemon.md"
   ]
 }

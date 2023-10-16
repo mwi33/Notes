@@ -1,0 +1,4 @@
+# Nmap 7.94 scan initiated Sun Oct 15 18:28:11 2023 as: nmap -p 80 -oG nmap_tcp_p25 192.168.236.202
+Host: 192.168.236.202 ()	Status: Up
+Host: 192.168.236.202 ()	Ports: 80/open/tcp//http///
+# Nmap done at Sun Oct 15 18:28:12 2023 -- 1 IP address (1 host up) scanned in 0.62 seconds
