@@ -1,0 +1,4 @@
+# Nmap 7.94 scan initiated Thu Oct 12 05:22:45 2023 as: nmap --script smtp-open-relay.nse -oG nse_open_relay 192.168.199.71
+Host: 192.168.199.71 ()	Status: Up
+Host: 192.168.199.71 ()	Ports: 22/open/tcp//ssh///, 25/open/tcp//smtp///, 53/closed/tcp//domain///, 80/open/tcp//http///, 445/open/tcp//microsoft-ds///	Ignored State: filtered (995)
+# Nmap done at Thu Oct 12 05:23:18 2023 -- 1 IP address (1 host up) scanned in 33.46 seconds
