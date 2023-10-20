@@ -1,6 +1,7 @@
 ## Initial scans
 Undertake an initial TCP and UDP scans of the target machines
 
+
 ~~~ bash
 sudo nmap [IP] -oG nmap_tcp_initial
 
