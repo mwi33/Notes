@@ -1,7 +1,6 @@
 ## Initial scans
 Undertake an initial TCP and UDP scans of the target machines
 
-
 ~~~ bash
 sudo nmap [IP] -oG nmap_tcp_initial
 
@@ -35,11 +34,14 @@ sudo nmap [IP] --script http-enum.nse -oG nmap_script_http-enum
 |none|none|none|none|none|none|
 ## Operating system
 Linux
+Apache 2.4.41
+
 ## Authentication methods
 |port|service|authentication method|notes|
 |----|-------|----|-----|
 |22|ssh|public key|none|
 |22|ssh|password|none|
+|80|http|password/htaccess|none|
 ## HTTP enumeration
 |url|folder|file|note|
 |---|------|----|----|
@@ -82,5 +84,21 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2023-10-17 20:09:
 [STATUS] 961.88 tries/min, 91379 tries in 01:35h, 1146204 to do in 19:52h, 5 active
 [STATUS] 857.00 tries/min, 95127 tries in 01:51h, 1142456 to do in 22:14h, 5 active
 [STATUS] 416.67 tries/min, 95146 tries in 03:48h, 1142437 to do in 45:42h, 5 active
-
 ~~~
+
+## Website directory structure
+
+-> <span style="color:cornflowerblue">192.168.xxx.202</span>
+  -> <span style="color:darkmagenta">index.html</span>
+  -> <span style="color:darkmagenta">login.php</span>
+  -> <span style="color:cornflowerblue">css</span>
+  -> <span style="color:cornflowerblue">img</span>
+  -> <span style="color:cornflowerblue">js</span>
+  -> <span style="color:cornflowerblue">lib</span>
+
+## Vulnerabilites
+
+### Apache 2.4.41
+
+
+  
