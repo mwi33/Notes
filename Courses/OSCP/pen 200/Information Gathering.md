@@ -470,8 +470,40 @@ tcp port 88 is open
 % {echo ((New-Object Net.Socket.TcpClient).Connect("192.168.50.151", $_)) "TCP port $_ is open"
 ~~~
 
+###### SMB Enumeration
 
+NetBIOS on port 139 as well as several UDP ports.  SMB runs on TCP port 445.  NetBIOS and SMB are two separate protocols.  NetBIOS is an independent session layer protocol and service that allows computers on a local network to communicate with each other.  Whilst SMB can work without NetBIOS, NetBIOS over TCP is required for backward compatibility and these two services often go hand in hand, as such enumeration of these two are often done together.
 
+A nmap scan targeting both SMB and NetBIOS will include both ports.
+
+~~~ bash
+
+nmap -v -p 138,445 -oG smb.txt [IP]
+
+# -v is for verbosity
+~~~
+
+Nmap includes several scripts specifically for SMB enumeration.
+###### nbtscan
+The nbtscan is an application specifically for enumerating NetBIOS.
+
+~~~ bash
+
+sudo nbtscan -r [IP/24]
+
+# -r specifies that local port 137 should be used
+
+~~~
+
+###### Enumerating from Windows
+
+'net view' is included in Windows machines and lists domains, resources and computers belonging to a given host.  We can list all the shares running on a given domain controller.
+
+~~~ bash
+
+net view \\dc01 /all
+
+~~~ 
 
 ## Tags
 #lifecycle
@@ -523,6 +555,8 @@ tcp port 88 is open
 #udpscan
 #jointtcpudpscan
 #networksweep
+#smb
+#netbios
 
 
 
