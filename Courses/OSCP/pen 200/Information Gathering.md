@@ -1,4 +1,4 @@
-# Table of Contents
+n# Table of Contents
 1. What do I need to Know
 2. The Penetration Testing Life-Cycle
 3. Passive Information Gathering
@@ -303,7 +303,7 @@ A default TCP scan will check the top 1000 ports and generates about 100 KB of t
 nmap 192.168.212.151
 
 # this scan, scans all 1-655355 ports and generates about 4mb of network traffic
-nmsp -p 1-655355 192.161.212.151
+nmap -p 1-655355 192.161.212.151
 ~~~
 
 NMAP has several types of scans, including the SYN scan (stealth scan).  This is the standard scan if no other parameters are passed to the application.  It does however require 'raw socket' privileges.  This scan does not send the final 'ACK' packet and therefore does not complete the 3 way handshake.  This means that the packet never gets passed to the 'application layer' and therefore won't appear in any application logs.
