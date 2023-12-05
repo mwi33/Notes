@@ -505,6 +505,85 @@ net view \\dc01 /all
 
 ~~~ 
 
+###### Enumerating from a mail server
+The SMTP has several commands that can be very useful in enumerating services.  These include 'VRFY' and 'EXPN'. Respectively, these verify an email address and provide the membership of a mailing list.  These services can be exploited to verifying users on a mail server.  
+
+~~~
+
+# connect to smtp server with nc
+
+nc -nv IP
+VRFY root
+
+252 2.0.0. root
+
+VRFY idontexist
+550 5.1.1 <idontexist> Recipient address rejected: User unknown in local recipient table.
+
+~~~
+
+These confirmation or error messages differ, which means that we can check for existing users in an automated fashion.
+
+~~~ python
+#!/usr/bin/python
+
+import socket
+import sys
+
+if len(sys.argv) != 3:
+        print("Usage: vrfy.py <username> <target_ip>")
+        sys.exit(0)
+
+# Create a Socket
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+# Connect to the Server
+ip = sys.argv[2]
+connect = s.connect((ip,25))
+
+# Receive the banner
+banner = s.recv(1024)
+
+print(banner)
+
+# VRFY a user
+user = (sys.argv[1]).encode()
+s.send(b'VRFY ' + user + b'\r\n')
+result = s.recv(1024)
+
+print(result)
+
+# Close the socket
+s.close()
+
+~~~
+
+We can also obtain SMTP information from a Windows machine by using the 'Test-NetConnection'
+
+~~~ bash
+
+Test-NetConnection -Port 25 IP
+
+# We can't interact with the SMTP server like we can with Linux, but we can 
+# install the Microsoft version of the Telnet client.  This requires root 
+# priviliges
+
+dism /online /Enable-Feature /FeatureName:Telnet
+
+# telnet use
+
+telnet IP 25
+
+~~~
+
+###### SNMP Enumeration
+
+Simple Network Management Protocol (SNMP) is a network protocol that is often poorly understood and incorrectly configured.  In particular version 1, 2 and 2c offer no traffic encryption and is vulnerable to both replay attacks and IP spoofing.
+
+SNMP MIB Tree - The SNMP Management Information Base Tree is a database containing information usually related to network management.  This database is organised like a tree, with branches that represent different organisation or network functions.  The leaves of a tree (or final endpoints) correspond to specific variable values that can be accessed and probed by an external user.  The IBM knowledge center contains a wealth of information about the MIB tree.
+
+
+
 ## Tags
 #lifecycle
 #deliverables
@@ -557,6 +636,10 @@ net view \\dc01 /all
 #networksweep
 #smb
 #netbios
+#smtp
+#vrfy
+#expn
+#pythoncodeexample
 
 
 
