@@ -582,6 +582,36 @@ Simple Network Management Protocol (SNMP) is a network protocol that is often po
 
 SNMP MIB Tree - The SNMP Management Information Base Tree is a database containing information usually related to network management.  This database is organised like a tree, with branches that represent different organisation or network functions.  The leaves of a tree (or final endpoints) correspond to specific variable values that can be accessed and probed by an external user.  The IBM knowledge center contains a wealth of information about the MIB tree.
 
+~~~ bash
+
+# --open returns results that only have open ports
+sudo nmap -sU --open -p 161 192.168.50-254 -oG open_snmp.txt
+
+# we can also use tools like onesixtyone to attempt to brut force the against a list of ip addresses.
+
+# first we build a list of ip addresses
+
+echo public > community
+echo private >> community
+echo manager >> community
+
+for ip in $(seq 1 254); do echo 192.168.50.$ip; done > ips
+
+onesixtyone -c community -i ips
+
+~~~
+
+Once we find snmp services we can start to query them for specific MIB data.  We can query snmp values using the snmpwalk, provided that we know the snmp read-only community string, which in most cases is 'public'.
+
+~~~ bash
+
+snmpwalk -c public -v1 -t 10 192.168.186.151
+
+# -c specifies the community string pubic
+# -v specifies the snmp version
+# -t 10 increases the timeout period to 10 seconds
+
+~~~
 
 
 ## Tags
@@ -640,6 +670,9 @@ SNMP MIB Tree - The SNMP Management Information Base Tree is a database containi
 #vrfy
 #expn
 #pythoncodeexample
+#snmp
+#managementinformationbase
+#managementinformationbase 
 
 
 
