@@ -613,7 +613,11 @@ snmpwalk -c public -v1 -t 10 192.168.186.151
 
 ~~~
 
+SNMP uses 'Get' requests to communicate between the MIB and NMS.  NMS can communicate with the MIB with several verbs, including 'Get, 'Set, 'Trap' and 'Inform'.  
 
+Get requests include 'Get', 'GetNext' and 'GetBulk'.  We can also use 'Set' requests to change values in the MIB.
+
+'Trap' and 'Inform' are used to communicate back to the NMS.  These can be used to alert the NMS of issues e.g. if a network interface goes down.  The difference between the two is that 'Inform'  is reliable in the sense that it requires an acknowledgement before it ceases sending these messages.  'Trap' on the other hand doesn't require an acknowledgement.  It simply sends the message and then stops.
 ## Tags
 #lifecycle
 #deliverables
