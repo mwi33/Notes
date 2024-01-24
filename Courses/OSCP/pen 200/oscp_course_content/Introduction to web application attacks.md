@@ -56,8 +56,32 @@ The 'Intruder' tool within Burpe-suite is used to automate a variety of attack m
 
 Configure the proxy server as usual so that it captures web traffic as normal.  When a password is submitted via 'Wordpress' site a POST request is used.  From within the the http-history tab and right click on the post item and 'send to intruder'.
 
-Intruder can then be used to manipulate the 'password' component of the POST request.  
+Intruder can then be used to manipulate the 'password' component of the POST request.
+## Web application enumeration
+### Learning objectives
+1.  Learn how to debug web applications;
+2. Understand how to enumerate and inspect headers, cookies and source code; and
+3. Learn how to conduct API testing methodologies.
+
+It is important to utilise passive enumeration techniques initially to discover the implemented technology stack.  Generally, this consists of:
+1.  Host Operating System (OS);
+2. Web server software;
+3. Database software; and
+4. Front and back-end programming.
+
+It is worthwhile to note that many web applications are implemented using off the shelf frameworks and bundles.  Common examples of this include:
+1.  Flask;
+2. Django;
+3. Wordpress; and
+4. Drupal.
+
+It is important to identify the components of a web application before attempting to blindly exploit it.  Many web application vulnerabilities are technology agnostic, however, others need to be carefully configured for a specific target.
+
+
+
+
 ## Tags
+#enumeration
 #nmap 
 #burpsuite
 #Wappalyzer
