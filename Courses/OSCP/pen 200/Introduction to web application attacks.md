@@ -47,7 +47,7 @@ The steps to configure the internal proxy server are as follows:
 4.  By default burp suite listens on localhost:8080;
 5.  Firefox needs to be configured.  Add 'about:preference#general'.  At the bottom of the  page select the 'settings' option.
 6.  Select the 'manual' and the 'also use this proxy for https';
-7.  Set the 'HTTP' proxy to '127.0.0.1'; and
+7.  Set the 'HTTP' proxy to '127.0.0.1:8080'; and
 8.  Select 'Ok';
 
 With the proxy configured the http data will be captured by Burp-suite.  We can now see both the request and response details.
