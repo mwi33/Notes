@@ -77,9 +77,65 @@ It is worthwhile to note that many web applications are implemented using off th
 
 It is important to identify the components of a web application before attempting to blindly exploit it.  Many web application vulnerabilities are technology agnostic, however, others need to be carefully configured for a specific target.
 
+### Inspect HTTP response headers and site maps
+The robots.txt contains the pages which bots can and cannot access.  They are relevant for search engines.  Robots.txt includes both allow and disallow directives, which instructs web crawlers and search engines which pages should and shouldn't indexed.  This can be ignored.  
+
+~~~ bash
+# this obtains the robots.txt for google.com
+
+curl https://google.com/robots.txt
+
+~~~
+
+### Enumerating and abusing APIs
+API are essentially access points to functions and data, which are built and deployed for machine to machine integration.
+
+~~~ bash
+# api are accessed with the following structure
+
+https://api_name/v1/
+
+~~~
+
+Conventional tools like 'gobuster' can be used to identify API endpoints, which includes a 'pattern' function (-p). 
+
+~~~ bash
+# using the Gobuster pattern function
+# pattern.txt contains the structure of the pattern we are going to bruteforce.
+# {GOBUSTER}/v1
+# {GOBUSTER}/v2
+
+gobuster dir -u <IP> -w /usr/share/wordlists/dirb/big.txt -p pattern.txt
+
+# this returns results that follow this function
+
+/books/v1
+/users/v1
+
+~~~
+
+We can inspect the API by using the curl function:
+
+~~~ bash
+
+# the '-i' parameter includes the http headers in the response
+curl -i https://<IP>/users/v1
+
+# this can return a list of users which can be brute-forced
+# it returns several usernames including 'admin'
+
+# with this additional username information known, we can try to breute-force the username component of the api
+
+gobuster dir -u https://<IP>/users/v1/admin/ -w /usr/share/wordlists/dirb/small.txt
+
+# this returns additional api information, including 'email' and 'password'
+
+curl -i https://<IP>/users/v1/admin/password
+
+# this results in a '405 method not allowed'.  This suggests that the endpoint exists.  By default, the curl command uses the 'GET' method (which is not allowed).  
 
 
-
+~~~
 ## Tags
 #enumeration
 #nmap 
