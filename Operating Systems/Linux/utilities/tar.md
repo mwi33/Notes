@@ -1,4 +1,4 @@
-Extrtact data from tar.gz file
+Extract data from tar.gz file
 
 ~~~ bash
 

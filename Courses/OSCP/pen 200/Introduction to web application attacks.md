@@ -290,6 +290,13 @@ let encode = encode_to_javascript('insert_minified_javascript')
 console.log(encoded)
 ~~~
 
+### OS Command Injection
+Web applications frequently need to interact with the underlying OS to undertake routine tasks like interacting with the file system.  Web applications should provide a specific API with prepared commands to interact with the OS which cannot be changed by user input.  These however are time consuming to create and maintain.  
+Frequently, developers rely on user input and then sanitise.  This means that user input is filtered cor any command sequences that might try to change the application's behavior.
+#### Creating a Windows reverse shell with Powercat
+1.  Copy 'Powercat' to the working directory;
+2. Start a Python 3 http server in the same directory; and
+3. S
 ## Tags
 #enumeration
 #nmap 
