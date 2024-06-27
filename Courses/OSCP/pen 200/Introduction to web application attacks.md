@@ -135,14 +135,12 @@ curl -i https://<IP>/users/v1/admin/password
 # this results in a '405 method not allowed'.  This suggests that the endpoint exists.  By default, the curl command uses the 'GET' method (which is not allowed).  
 
 ~~~
-
 ## Steps
 Fix this
 1.  Scan the target with gobuster using a api pattern
 2.  Enumerate users by sending commands to the API endpoint - user/v1
 3.  With a known users scan the user endpoint with gobuster - user/v1/admin
 4.  Call the password endpoint
-
 ### Cross site scripting
 Data sanitization is a process in which user input is processed to remove all dangerous characters and strings.  This prevents users from injecting and potentially execute malicious code.
 
@@ -173,7 +171,6 @@ let a = multiplyValues(3,5)
 console.log(a)
 
 ~~~
-
 #### Identifying XSS vulnerabilities
 We can find potential entry points for XSS by examining a web application and identifying input fields (such as search fields) that accept unsanitised input, which is then displayed as output in subsequent pages.
 
@@ -185,7 +182,6 @@ Once we identify an entry point, we can input special characters and observe the
 < > ' " { } ;
 
 ~~~
-
 #### Basic XSS
 In this example we will exploit a known vulnerability in a Wordpress plugin called 'visitors'.  The plugins main feature is to log the websites visitor data, including the IP, source and User-Agent fields.  The source code for the plugin can be downloaded from its website.  If we inspect the database.php file, we verify how the data is stored inside the Wordpress database.
 
@@ -220,7 +216,6 @@ User-Agent:<script>alert(42)</script>
 ~~~
 
 Rather than recording this data, it runs the arbitrary code and displays the message block on the sites page. 
-
 #### Session cookies
 With XSS we can steal session cookies and session information if the application uses and insecure session management configuration.  If we can steal an authenticated users session cookie we can masquerade as that user within the target web site.  
 Websites use cookies to track state and information about users.  Cookies can be set with several optional flags, including two that are particularly interesting to us as pen tester:  Secure and HTTPOnly.
@@ -228,7 +223,6 @@ Websites use cookies to track state and information about users.  Cookies can be
 The secure flag instructs the browser to only send the cookie over encrypted connections, such as HTTPS.  This protects the cookie from being send in clear text and captured over the network.
 
 The HTTPOnly flag instructs the browser to deny JavaScript access to the cookie.  If this flag is not set, we can use an XSS payload to steal the cookie.
-
 #### Privilege Escalation
 By injecting some JavaScript in the 'User-Agent' HTTP header, which is then run when the WordPress Administrator reloads the plugin the JavaScript is executed.  Because this code is executed by an Administrator, we can use this to inject JavaScript code that creates a new user.  Essentially, code is injected into a WordPress database which also stores information of the relevant plugin.  When the administrator reloads the plugin, the injected code executes, by default with administrative privileges. 
 
