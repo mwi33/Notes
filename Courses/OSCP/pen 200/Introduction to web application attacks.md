@@ -287,13 +287,54 @@ console.log(encoded)
 ## Directory Traversal
 In this section, we will understand what a directory traversal vulnerability is, how it can be identified and exploited.  It is also useful to know how to correct the vulnerability.
 
+### Absolute and relative paths
+The easiest way to understand the difference between absolute and relative paths is to visualise the location of a file system as if you were in it.  A relative path is the directions that you would take to get from where you are to where you need to be i.e. the directions are based on where you are.  An absolute path is the location/directions to the location you want to go  from the root directory.
+
+~~~ bash
+# if Im in the home directory "/home/kali" and I want to get to the 'Downloads' direcotry I would use the command below.
+
+pwd
+/home/kali
+cd Downloads
+pwd
+/home/kali/downloads
+
+# from the root directory
+pwd
+/
+cd Downloads
+cd: no such file or directory: Downloads
+
+# this error is because the 'Downloads' directory isn't in the current working directory. 
+cd /home/kali/Downloads
+
+# this works as we specify the directions to the 'Downloads' directory from a know position.  In this case, the root direcotry
+~~~
+
+### Identifying and exploiting directory traversals
+These types of exploits are generally caused by developers not sanitising user input.  When a web application shows a web page, that file is retrieved from the file system.  These files are generally stored in the web-server root directory or one if its sub-directories.  On Linux based web-servers, the 'var/www/html' directory is frequently used as the web root directory.  
+When a web application serves a page 'http://www/example.com/file.html' it will access the 'file.html' from the '/var/www/html/file.html' directory.  
+A web application is susceptible to a directory traversal exploit when file outside of the web-root can be accessed using a relative path.  A directory traversal using relative paths can be used to access sensitive files including SSH private keys or configuration files.
+
+It is important to examine all of the links on a page to identify directory traversal vulnerabilities.
+
+~~~ bash
+
+https://example.com/cms/login.php?language=en.html
+
+~~~
+The URL above shows that a language parameter accepts 'en.html'.  If we try the following url we can confirm if a 'en.html' exists.
+
+~~~ bash
+
+https://example.com/cms/en.html
+
+~~~
+If this loads the page, we know that 
+
 ### OS Command Injection
 Web applications frequently need to interact with the underlying OS to undertake routine tasks like interacting with the file system.  Web applications should provide a specific API with prepared commands to interact with the OS which cannot be changed by user input.  These however are time consuming to create and maintain.  
 Frequently, developers rely on user input and then sanitise.  This means that user input is filtered cor any command sequences that might try to change the application's behavior.
-#### Creating a Windows reverse shell with Powercat
-1.  Copy 'Powercat' to the working directory;
-2. Start a Python 3 http server in the same directory; and
-3. S
 ## Tags
 #enumeration
 #nmap 
