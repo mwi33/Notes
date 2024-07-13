@@ -1,4 +1,4 @@
-This learning module contains:
+	qThis learning module contains:
 
 1.  Web application assessment methodology;
 2.  Web application enumeration; and
@@ -76,7 +76,6 @@ It is worthwhile to note that many web applications are implemented using off th
 4. Drupal.
 
 It is important to identify the components of a web application before attempting to blindly exploit it.  Many web application vulnerabilities are technology agnostic, however, others need to be carefully configured for a specific target.
-
 ### Inspect HTTP response headers and site maps
 The robots.txt contains the pages which bots can and cannot access.  They are relevant for search engines.  Robots.txt includes both allow and disallow directives, which instructs web crawlers and search engines which pages should and shouldn't indexed.  This can be ignored.  
 
@@ -141,7 +140,7 @@ Fix this
 2.  Enumerate users by sending commands to the API endpoint - user/v1
 3.  With a known users scan the user endpoint with gobuster - user/v1/admin
 4.  Call the password endpoint
-### Cross site scripting
+## Cross site scripting
 Data sanitization is a process in which user input is processed to remove all dangerous characters and strings.  This prevents users from injecting and potentially execute malicious code.
 
 Cross-site scripting (XSS) is a vulnerability that exploits a users trust in a website by dynamically injecting content into the page rendered by the users browser.  XSS is considered high risk and prevalent.
@@ -283,6 +282,10 @@ function encode_to_javascript(string){
 let encode = encode_to_javascript('insert_minified_javascript')
 console.log(encoded)
 ~~~
+
+
+## Directory Traversal
+In this section, we will understand what a directory traversal vulnerability is, how it can be identified and exploited.  It is also useful to know how to correct the vulnerability.
 
 ### OS Command Injection
 Web applications frequently need to interact with the underlying OS to undertake routine tasks like interacting with the file system.  Web applications should provide a specific API with prepared commands to interact with the OS which cannot be changed by user input.  These however are time consuming to create and maintain.  

@@ -1,6 +1,5 @@
 # Overview
 The zsh terminal keeps a file that stores the commands you've typed before.  This file is called the history file.  At times this file can become damaged or corrupt, which in turn causes a variety of errors when the terminal is started.
-
 ## Fix
 To fix the corrupt file we create a new one and move the commands from the corrupt file to a new one.
 
