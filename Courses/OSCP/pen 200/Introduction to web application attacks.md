@@ -442,7 +442,12 @@ start.sh
 While LFI vulnerabilities can be used to include local files, RFI vulnerabilities allow us to include files from a remote system over HTTP or SMB.  The included file can be executed in the context of the web application.
 Kali Linux includes several web-shells in the '/usr/share/webshells/php' directory that can be used for RFI.  
 #### Web-shells
-A web-shell is a small script that provides a web-based command line interface, making it easier and more convenient to execute commands.  One of the web-shells provided by Kali Linux is the 'simple-backdoor.php'
+A web-shell is a small script that provides a web-based command line interface, making it easier and more convenient to execute commands.  One of the web-shells provided by Kali Linux is the 'simple-backdoor.php'[[simple-backdoor.php]]
+### File Upload Vulnerabilities
+File Upload Vulnerabilities (FUV)  are those vulnerabilities that are associated with web-applications that provide the functionality to upload files to the application host.  If these upload features are not implemented properly, they can expose the host application and its underlying technology to exploitation.  
+These vulnerabilities can be exposed in several different ways.  An executable file can be uploaded and then executed.  For example, we could upload a PHP file on a system where PHP is enabled and then execute it using a web-browser or cURL.
+It could present as a combination of both a file upload and a directory traversal.  We could use the directory traversal to overwrite an 'authorised_keys' file.
+Finally, it could consist a file upload vulnerability and then user interaction.  That is, upload a .docx file that has malicious macros included.
 ### OS Command Injection
 Web applications frequently need to interact with the underlying OS to undertake routine tasks like interacting with the file system.  Web applications should provide a specific API with prepared commands to interact with the OS which cannot be changed by user input.  These however are time consuming to create and maintain.  
 Frequently, developers rely on user input and then sanitise.  This means that user input is filtered cor any command sequences that might try to change the application's behavior.
