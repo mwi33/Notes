@@ -1,0 +1,13 @@
+1.  OS and version;
+2.  Ports and services;
+3.  Applications and versions;
+4.  Vulnerabilities;
+	1. Cross Site Scripting;
+	2. Directory Traversal;
+	3. Local File Inclusion;
+	4. Log poisoning;
+	5. PHP wrappers;
+	6. Remote File Inclusion;
+	7. Upload vulnerabilities;
+	8. Command injection;
+	9. SQL injection;

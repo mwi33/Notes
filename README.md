@@ -35,8 +35,8 @@
 7. Technology
 	1. [Web Requests](Web%20Requests)
 8. Exploits
-	1. [Path injection](Path%20Injection)
-	2. [File Duplication](File%20Duplication)
+	1. [Path injection](Path%20injection.md)
+	2. [File Duplication](File%20Duplication.md)
 9. Useful resources
 	1. [Curated Collection of Resources](Curated%20Collection%20of%20Resources)
 	2. [Markdown Syntax](Markdown%20Syntax)
