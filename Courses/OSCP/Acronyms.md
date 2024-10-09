@@ -1,5 +1,0 @@
-* TCP
-* UDP
-* SYN
-* ICMP
-* SNMP*
